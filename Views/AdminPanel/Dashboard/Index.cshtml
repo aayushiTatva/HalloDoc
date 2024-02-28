@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class="mx-sm-1 mx-md-2 mx-xxl-3 mt-0 bg-light">
+    <div id="PartialViewContainer">
+        <partial name="DashboardSubPart.cshtml" />
+    </div>
+    <div id="SearchResult">
+
+    </div>
+</div>
+
+<script>
+    $(function (){
+        $("#filterForm").submit();
+    });
+</script>
+<script src="~/js/adminDashboard.js"></script>
+<script>
+    $("#newrequest").click(function () {
+        $("#news").show();
+    });
+    $("#pendingrequest").click(function () {
+        $("#pendings").show();
+    });
+    $("#activerequest").click(function () {
+        $("#active").show();
+    });
+    $("#concluderequest").click(function () {
+        $("#concludes").show();
+    });
+    $("#tocloserequest").click(function () {
+        $("#tocloses").show();
+    });
+    $("#unpaidrequest").click(function () {
+        $("#unpaids").show();
+    });
+</script>

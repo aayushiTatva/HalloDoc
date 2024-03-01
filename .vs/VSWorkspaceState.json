@@ -1,6 +1,17 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\HalloDocMVC",
+    "\\HalloDocMVC.DBEntity",
+    "\\HalloDocMVC.DBEntity\\DataContext",
+    "\\HalloDocMVC.DBEntity\\ViewModels",
+    "\\HalloDocMVC.DBEntity\\ViewModels\\AdminPanel",
+    "\\HalloDocMVC.Repositeries",
+    "\\HalloDocMVC.Repositeries\\Repository",
+    "\\HalloDocMVC.Repositeries\\Repository\\Interface",
+    "\\HalloDocMVC\\wwwroot",
+    "\\HalloDocMVC\\wwwroot\\js"
   ],
+  "SelectedNode": "\\HalloDocMVC.Repositeries\\Repository\\ComboBox.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,94 @@
+﻿@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.ViewCaseModel
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant
+<div class="container">
+    <div class="card" style="border: none;">
+        <div class="card-header col-6 d-flex" style="border: none;">
+            <div><h3>New Request</h3></div>
+            <span class="rounded-3 bg-success text-white mx-3 p-1"><small>Patients</small></span>
+        </div>
+    </div>
+    <div class="card-body bg-white rounded shadow ">
+        <form method="post" asp-controller="PatientRequest" asp-action="Create" enctype="multipart/form-data">
+            <div class="mt-4" >
+                <h4>Patient Information</h4>
+                <div class="mt-2"> Confirmation Number</div>
+                <div>
+                    <span class="text-info"> @*@CV.UserName()*@012021113220321320</span>
+                </div><br/>
+                <form class="form-group-horizontal ">
+                    <div class=" row">
+                        <div class="col form-floating  space">
+                            <textarea asp-for="Notes" class="form-control shadow-none " id="notes" placeholder="details" style="height: 100px"></textarea>
+                            <label class="ms-2"for="notes"> Patient Notes</label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col form-floating  space">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none" id="fname" placeholder="details">
+                            <label class="ms-2"  for="fname"> First Name</label>
+                        </div>
+                        <div class="col form-floating  space">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none" id="lname" placeholder="details">
+                            <label class="ms-2" for="lname">Last Name</label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-6 form-floating  space">
+                            <input asp-for="DateOfBirth" type="date" class="form-control shadow-none" id="dob" placeholder="Date of Birth">
+                            <label class="ms-2" for="dob">Date Of Birth</label>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="d-flex form-floating  space" style="height:100%;">
+                                <input asp-for="PhoneNumber" class="form-control shadow-none" type="tel" id="phone" placeholder="(201) 555-0123" />
+                                <label class="ms-2" for="tel">Phone Number</label>
+                                <button class="btn border border-info text-info mx-2 " >
+                                    <i class="bi bi-telephone-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-6 form-floating  space">
+                            <input asp-for="Email" type="email" class="form-control shadow-none" id="email" placeholder="details">
+                            <label class="ms-2" for="emailid"> Email</label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <h4>Location Information</h4>
+                        <div class="form-group-horizontal ">
+                            <div class="row">
+                                <div class="col-6 form-floating  space">
+                                    <input asp-for="Address" type="text" class="form-control shadow-none border-none" id="region" placeholder="details">
+                                    <label class="ms-2" for="region"> Region</label>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex form-floating space">
+                                        <input asp-for="Region" type="text" class="form-control shadow-none" id="business" placeholder="details">
+                                        <label class="ms-2" for="business">Business Name/ Address</label>
+                                        <button class="btn border border-info text-info mx-2">
+                                            <i class="fa fa-map-marker"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div><br />
+                            <div class="row">
+                                <div class="col-6 form-floating  space">
+                                    <input asp-for="Room" type="text" class="form-control shadow-none " id="room" placeholder="details">
+                                    <label class="ms-2" for="room"> Room # I Suite (Optional)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row space">
+                        <div class="d-flex justify-content-end ">
+                            <input type="submit" class="bg-info border border-outline-info text-white rounded-2 submission text-white" value="Assign">
+                            <a asp-controller="actions" asp-action="ViewNotes" class="btn bg-info border border-outline-info text-white rounded-2 text-white ms-2">View Notes</a>
+                            <a asp-controller="home" asp-action="SubmitRequestPage" class="btn bg-danger rounded-2 border border-outline-danger text-white ms-2">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </form>
+    </div>
+</div>

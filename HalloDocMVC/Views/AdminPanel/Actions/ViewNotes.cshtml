@@ -1,74 +1,105 @@
-﻿<div class="container mb-5">
-    <div class="card bg-light border-0">
-        <div class="card-header  border-0  bg-light text-end">
-            <div class="text-start d-flex justify-content-between">
-                <div>
-                    <h4 class="form-title fw-bold mt-2 mx-2">Notes</h4>
-                </div>
-                <div>
-                    <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info shadow-none">
-                        <strong class="text-info">
-                            <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
-                        </strong>
-                    </a>
-                </div>
+﻿@{
+    Layout = "_LayoutAdminDashboard";
+}
+<div class="container">
+    <div class="card">
+        <div class="card-header ">
+            <div class="row justify-content-between">
+                <div class="col-6"><h3>Notes</h3></div>
+                <div class="col-6">
+                    <a class="relogin" asp-controller="Dashboard" asp-action="Index"><button class="relogin shadow-none bg-white">Back</button></a>
+                </div><br /><br /><br /><br />
             </div>
-
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-sm-6 col-xs-12 mb-3">
-                    <div class="d-flex p-2 bg-white shadow">
-                        <div class="p-2">
-                            <i class="fa-solid fa-right-left"></i>
-                        </div>
-                        <div class="ms-2 d-flex flex-column p-2">
-                            <strong class="fs-6">Transfer Notes</strong>
-                            <p>-</p>
-                        </div>
+            <div class="row d-flex">
+                <div class="col d-flex mx-4">
+                    <div class="col-1 mt-3 ">
+                        <i class='bi bi-arrow-left-right' style='font-size:28px'></i>
+                    </div>
+                    <div class="col mt-3">
+                        <h4>Transfer Notes</h4><h6>Admin transfered to Dr.Agola on 27/09/23 at 09:38:34 AM test assign</h6>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xs-12 mb-3">
-                    <div class="d-flex p-2 bg-white shadow">
-                        <div class="p-2">
-                            <i class="fa-solid fa-user-doctor"></i>
-                        </div>
-                        <div class="ms-2 d-flex flex-column p-2">
-                            <strong class="fs-6">Physician Notes</strong>
-                            <p>-</p>
-                        </div>
+                <div class="col d-flex mx-4">
+                    <div class="col-1 mt-3 ">
+                        <i class="fa fa-user-md" style="font-size:28px"></i>
+                    </div>
+                    <div class="col mt-3">
+                        <h4>Physician Notes</h4><h6>test add,concluded</h6>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xs-12 mb-3">
-                    <div class="d-flex p-2 bg-white shadow">
-                        <div class="p-2">
-                            <i class="fa-solid fa-user-tie"></i>
-                        </div>
-                        <div class="ms-2 d-flex flex-column p-2">
-                            <strong class="fs-6">Admin Notes</strong>
-                            <p>-</p>
-                        </div>
+            </div><br />
+            <div class="row d-flex">
+                <div class="col d-flex mx-4">
+                    <div class="col-1 mt-3 ">
+                        <i class='fa fa-user' style='font-size:28px'></i>
+                    </div>
+                    <div class="col-5 mt-3">
+                        <h4>Admin Notes</h4><h6><light>--</light></h6>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="bg-white shadow p-2">
-                        <form>
-                            <div class="col-12">
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control shadow-none" placeholder="Leave a comment here" id="AdminNotes" style="height: 100px"></textarea>
-                                    <label for="AdminNotes">Admin Notes</label>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <a class="btn btn-info text-white">Save Changes</a>
-                            </div>
-                        </form>
+                <div class="col d-flex mx-4">
+                    <div class="col-1 mt-3 ">
+                        <i class="fa fa-users-medical" style='font-size:28px'></i>
+                    </div>
+                    <div class="col mt-3">
+                        <h4>Patients Notes</h4><h6>test add,concluded</h6>
                     </div>
                 </div>
-            </div>
+            </div><br />
+            <div class="row d-flex">
+                <div class="col d-flex mx-4">
+                    <div class="col-1 mt-3 ">
+                        <i class="fa fa-window-close" style='font-size:28px'></i>
+                    </div>
+                    <div class="col mt-3">
+                        <h4>Admin Cancellation Notes</h4><h6><light>--</light></h6>
+                    </div>
+                </div>
+                <div class="col d-flex mx-4" style="box-shadow:  3px 5px 6px #ccc">
+                    <div class="col-1 mt-3 ">
+                        <i class='fa fa-times-circle' style='font-size:28px'></i>
+                    </div>
+                    <div class="col mt-3">
+                        <h4>Physician Cancellation Notes</h4><h6>test add,concluded</h6>
+                    </div>
+                </div>
+            </div><br />
+            <div class="row d-flex">
+                <div class="col d-flex mx-4">
+                    <div class="col-1 mt-3 ">
+                        <i class="fa fa-close" style='font-size:28px'></i>
+                    </div>
+                    <div class="col mt-3">
+                        <h4>Patient Cancellation Notes</h4><h6><light>--</light></h6>
+                    </div>
+                </div>
+                <div class="col d-flex mx-4">
+                    @*<div class="col-1 mt-3 ">
+                        <i class="fas fa-users-medical" style='font-size:28px'></i>
+                        </div>
+                        <div class="col mt-3">
+                        <h4>Physician Cancellation Notes</h4><h6>test add,concluded</h6>
+                        </div>*@
+                </div>
+            </div><br />
+            <form>
+                <div class="row d-flex">
+                    <div class="col d-flex mx-4">
+                        <div class="col form-floating  space">
+                            <textarea @*asp-for="Symptoms"*@ class="form-control shadow-none " id="adminnotes" placeholder="details"></textarea>
+                            <label for="adminnotes"> Admin Notes</label>
+                        </div>
+                    </div>
+                </div><br />
+                <div class="row space">
+                    <div class="d-flex justify-content-end ">
+                        <button type="submit" class="submission bg-info rounded-2 border border-outline-info text-white ">Save changes</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>

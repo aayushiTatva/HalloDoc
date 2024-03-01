@@ -1,44 +1,45 @@
-﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminDashboardList>;
-@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
+﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminDashboardList>
+    ;
+    @using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
 
 
-<!--Desktop Screen View of table-->
-<div class="table-responsive m-2 d-none d-sm-block">
-    <table class="w-100">
-        <thead style="height:50px;">
-            <tr>
-                <th scope="col">
-                    <small>Name</small>
-                </th>
-                <th></th>
-                <th scope="col">
-                    <small>Date Of Birth</small>
-                </th>
-                <th scope="col">
-                    <small>Region</small>
-                </th>
-                <th scope="col">
-                    <small>Physician Name</small>
-                </th>
-                <th scope="col">
-                    <small>Date of Service</small>
-                </th>
-                <th scope="col">
-                    <small>Address</small>
-                </th>
-                <th scope="col">
-                    <small>Notes</small>
-                </th>
-                <th scope="col">
-                    <small>Chat With</small>
-                </th>
-                <th scope="col">
-                    <small>Actions</small>
-                </th>
-            </tr>
-        </thead>
-        <tbody class="bg-white mb-5">
-            @foreach (var item in Model)
+    <!--Desktop Screen View of table-->
+    <div class="table-responsive m-2 d-none d-sm-block">
+        <table class="w-100">
+            <thead style="height:50px;">
+                <tr>
+                    <th scope="col">
+                        <small>Name</small>
+                    </th>
+                    <th></th>
+                    <th scope="col">
+                        <small>Date Of Birth</small>
+                    </th>
+                    <th scope="col">
+                        <small>Region</small>
+                    </th>
+                    <th scope="col">
+                        <small>Physician Name</small>
+                    </th>
+                    <th scope="col">
+                        <small>Date of Service</small>
+                    </th>
+                    <th scope="col">
+                        <small>Address</small>
+                    </th>
+                    <th scope="col">
+                        <small>Notes</small>
+                    </th>
+                    <th scope="col">
+                        <small>Chat With</small>
+                    </th>
+                    <th scope="col">
+                        <small>Actions</small>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white mb-5">
+                @foreach (var item in Model)
             {
                 <tr class="@Enum.GetName(typeof(RequestType), item.RequestTypeId) text-white border-bottom border-white">
                     <td><small>@item.PatientName</small></td>
@@ -71,7 +72,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="ViewCase" class="dropdown-item" asp-route-id="@item.RequestId">
                                     <i class="fa-solid fa-file-pen me-1"></i>
                                     View Case
                                 </a>
@@ -123,14 +124,14 @@
                     </td>
                 </tr>
             }
-        </tbody>
-    </table>
-</div>
-<!--End Desktop Screen View of table-->
-<!--Mobile Screen View of table-->
-<div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
-    <div class="dBlock">
-        @foreach (var item in Model)
+            </tbody>
+        </table>
+    </div>
+    <!--End Desktop Screen View of table-->
+    <!--Mobile Screen View of table-->
+    <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
+        <div class="dBlock">
+            @foreach (var item in Model)
         {
             <div class="accordion-item btn-i text-secondary">
                 <h2 class="accordion-header" id="flush-heading-@item.RequestId">
@@ -158,7 +159,7 @@
                 <div id="flush-@item.RequestId" class="accordion-collapse collapse mb-3 border-top" data-bs-parent="#accordionExample">
                     <div class="accordion-body container-fluid">
                         <div class="d-flex justify-content-end me-2">
-                            <button id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
+                            <button asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
                                 <small>View Case</small>
                             </button>
                         </div>
@@ -239,6 +240,6 @@
 
             </div>
         }
+        </div>
     </div>
-</div>
-<!--End Mobile Screen View of table-->
+    <!--End Mobile Screen View of table-->

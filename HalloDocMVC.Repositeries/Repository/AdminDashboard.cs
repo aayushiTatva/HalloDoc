@@ -35,35 +35,35 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         {
             List<int> status = Status.Split(',').Select(int.Parse).ToList();
             List<AdminDashboardList> allData = (from req in _context.Requests
-                                                    join reqClient in _context.Requestclients
-                                                    on req.Requestid equals reqClient.Requestid into reqClientGroup
-                                                    from rc in reqClientGroup.DefaultIfEmpty()
-                                                    join phys in _context.Physicians
-                                                    on req.Physicianid equals phys.Physicianid into physGroup
-                                                    from p in physGroup.DefaultIfEmpty()
-                                                    join reg in _context.Regions
-                                                    on rc.Regionid equals reg.Regionid into RegGroup
-                                                    from rg in RegGroup.DefaultIfEmpty()
-                                                    where status.Contains(req.Status)
-                                                    orderby req.Createddate descending
-                                                    select new AdminDashboardList
-                                                   {
-                                                       RequestId = req.Requestid,
-                                                       RequestTypeId = req.Requesttypeid,
-                                                       Requestor = req.Firstname + " " + req.Lastname,
-                                                       PatientName = rc.Firstname + " " + rc.Lastname,
-                                                       DateOfBirth = new DateTime((int)rc.Intyear, DateTime.ParseExact(rc.Strmonth, "MMMM", new CultureInfo("en-US")).Month, (int)rc.Intdate),
-                                                       RequestedDate = req.Createddate,
-                                                       Email = rc.Email,
+                                                join reqClient in _context.Requestclients
+                                                on req.Requestid equals reqClient.Requestid into reqClientGroup
+                                                from rc in reqClientGroup.DefaultIfEmpty()
+                                                join phys in _context.Physicians
+                                                on req.Physicianid equals phys.Physicianid into physGroup
+                                                from p in physGroup.DefaultIfEmpty()
+                                                join reg in _context.Regions
+                                                on rc.Regionid equals reg.Regionid into RegGroup
+                                                from rg in RegGroup.DefaultIfEmpty()
+                                                where status.Contains(req.Status)
+                                                orderby req.Createddate descending
+                                                select new AdminDashboardList
+                                                {
+                                                    RequestId = req.Requestid,
+                                                    RequestTypeId = req.Requesttypeid,
+                                                    Requestor = req.Firstname + " " + req.Lastname,
+                                                    PatientName = rc.Firstname + " " + rc.Lastname,
+                                                    DateOfBirth = new DateTime((int)rc.Intyear, DateTime.ParseExact(rc.Strmonth, "MMMM", new CultureInfo("en-US")).Month, (int)rc.Intdate),
+                                                    RequestedDate = req.Createddate,
+                                                    Email = rc.Email,
 
-                                                       Region = rg.Name,
-                                                       ProviderId = req.Physicianid,
-                                                       ProviderName = p.Firstname + " " + p.Lastname,
-                                                       PatientPhoneNumber = rc.Phonenumber,
-                                                       Address = rc.Address + " " + rc.Street + " " + rc.City + " " + rc.State + " " + rc.Zipcode,
-                                                       Notes = rc.Notes,
-                                                       RequestorPhoneNumber = req.Phonenumber
-                                                   })
+                                                    Region = rg.Name,
+                                                    ProviderId = req.Physicianid,
+                                                    ProviderName = p.Firstname + " " + p.Lastname,
+                                                    PatientPhoneNumber = rc.Phonenumber,
+                                                    Address = rc.Address + " " + rc.Street + " " + rc.City + " " + rc.State + " " + rc.Zipcode,
+                                                    Notes = rc.Notes,
+                                                    RequestorPhoneNumber = req.Phonenumber
+                                                })
                                                    .ToList();
             return allData;
         }

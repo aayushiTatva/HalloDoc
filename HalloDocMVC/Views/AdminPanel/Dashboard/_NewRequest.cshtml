@@ -1,43 +1,44 @@
-﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminDashboardList>;
-@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
+﻿@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminDashboardList>
+    ;
+    @using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
 
-<!--Desktop Screen View of table-->
-<div class="table-responsive m-2 d-none d-sm-block">
-    <table class="w-100">
-        <thead style="height:50px;">
-            <tr>
-                <th scope="col">
-                    <small>Name</small>
-                </th>
-                <th></th>
-                <th scope="col">
-                    <small>Date Of Birth</small>
-                </th>
-                <th scope="col">
-                    <small>Requestor</small>
-                </th>
-                <th scope="col">
-                    <small>Requested Date</small>
-                </th>
-                <th scope="col">
-                    <small>Phone</small>
-                </th>
-                <th scope="col">
-                    <small>Address</small>
-                </th>
-                <th scope="col">
-                    <small>Notes</small>
-                </th>
-                <th scope="col">
-                    <small>Chat With</small>
-                </th>
-                <th scope="col">
-                    <small>Actions</small>
-                </th>
-            </tr>
-        </thead>
-        <tbody class="bg-white mb-5">
-            @foreach (var item in Model)
+    <!--Desktop Screen View of table-->
+    <div class="table-responsive m-2 d-none d-sm-block">
+        <table class="w-100">
+            <thead style="height:50px;">
+                <tr>
+                    <th scope="col">
+                        <small>Name</small>
+                    </th>
+                    <th></th>
+                    <th scope="col">
+                        <small>Date Of Birth</small>
+                    </th>
+                    <th scope="col">
+                        <small>Requestor</small>
+                    </th>
+                    <th scope="col">
+                        <small>Requested Date</small>
+                    </th>
+                    <th scope="col">
+                        <small>Phone</small>
+                    </th>
+                    <th scope="col">
+                        <small>Address</small>
+                    </th>
+                    <th scope="col">
+                        <small>Notes</small>
+                    </th>
+                    <th scope="col">
+                        <small>Chat With</small>
+                    </th>
+                    <th scope="col">
+                        <small>Actions</small>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white mb-5">
+                @foreach (var item in Model)
             {
                 <tr class="@Enum.GetName(typeof(RequestType), item.RequestTypeId)  border-bottom border-white">
                     <td><small>@item.PatientName</small></td>
@@ -62,15 +63,15 @@
 
                         @if (item.RequestTypeId != 2)
                         {
-                            <button class="btn border border-white text-white mt-2">
-                                <i class="fa-solid fa-phone pe-2"></i>
-                                <small>@item.RequestorPhoneNumber</small>
-                            </button>
-                            <div>
-                                <small>
-                                    (@Enum.GetName(typeof(RequestType), item.RequestTypeId))
-                                </small>
-                            </div>
+                        <button class="btn border border-white text-white mt-2">
+                            <i class="fa-solid fa-phone pe-2"></i>
+                            <small>@item.RequestorPhoneNumber</small>
+                        </button>
+                        <div>
+                            <small>
+                                (@Enum.GetName(typeof(RequestType), item.RequestTypeId))
+                            </small>
+                        </div>
                         }
                     </td>
                     <td><small>@item.Address</small></td>
@@ -86,23 +87,23 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#AssignCase" class="dropdown-item">
                                     <i class="fa-solid fa-file-circle-check me-1"></i>
                                     Assign Case
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#CancelCase" class="dropdown-item">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
                                     Cancel Case
-                                </a>
+                                </button>
                             </li>
                             <li>
-                                <a asp-controller="Actions" asp-action="ViewCase" class="dropdown-item">
+                                <a asp-controller="Actions" asp-action="ViewCase" class="dropdown-item" asp-route-id="@item.RequestId">
                                     <i class="fa-solid fa-file-pen me-1"></i>
                                     View Case
                                 </a>
-                                </li>
+                            </li>
                             <li>
                                 <a asp-controller="Actions" asp-action="ViewNotes" class="dropdown-item">
                                     <i class="fa-regular fa-file-lines me-2"></i>
@@ -110,24 +111,24 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#BlockCase" class="dropdown-item">
                                     <i class="fa-solid fa-ban me-1"></i>
                                     Block Patient
-                                </a>
+                                </button>
                             </li>
                         </ul>
 
                     </td>
                 </tr>
             }
-        </tbody>
-    </table>
-</div>
-<!--End Desktop Screen View of table-->
-<!--Mobile Screen View of table-->
-<div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
-    <div class="dBlock">
-        @foreach (var item in Model)
+            </tbody>
+        </table>
+    </div>
+    <!--End Desktop Screen View of table-->
+    <!--Mobile Screen View of table-->
+    <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
+        <div class="dBlock">
+            @foreach (var item in Model)
         {
             <div class="accordion-item btn-i text-secondary">
                 <h2 class="accordion-header" id="flush-heading-@item.RequestId">
@@ -155,20 +156,20 @@
                 <div id="flush-@item.RequestId" class="accordion-collapse collapse mb-3 border-top" data-bs-parent="#accordionExample">
                     <div class="accordion-body container-fluid">
                         <div class="d-flex justify-content-end me-2">
-                            <a asp-controller="Actions" asp-action="ViewCase" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
+                            <a asp-controller="Actions" asp-action="ViewCase" asp-route-id="@item.RequestId" id="viewCase" class="btn btn-sm border-primary text-primary rounded-pill 2px">
                                 <small>View Case</small>
                             </a>
                         </div>
-                        <p> 
+                        <p>
                             <i class="fa fa-calendar border border-info rounded-pill p-1 me-2" aria-hidden="true"></i>
                             Date of Birth: @item.DateOfBirth
                         </p>
-                        <p> 
-                            <i class="fa fa-envelope border border-info rounded-pill p-1 me-2"></i> 
+                        <p>
+                            <i class="fa fa-envelope border border-info rounded-pill p-1 me-2"></i>
                             Email : @item.Email
                         </p>
-                        <p> 
-                            <i class="fa fa-phone border  border-info rounded-pill p-1 me-2"></i> 
+                        <p>
+                            <i class="fa fa-phone border  border-info rounded-pill p-1 me-2"></i>
                             Patient : @item.PatientPhoneNumber
                         </p>
                         <p>
@@ -183,8 +184,8 @@
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #e42929;">
-                                    <small>Cancel Case</small>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#CancelCase" class="dropdown-item" style="background-color: #e42929;">
+                                    <small>Cancel Case </small>
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
@@ -203,27 +204,27 @@
                                 </button>
                             </div>
                             @*<div class="col-6 mb-3">
-                                <button class="btn btn-success text-white rounded-pill 2px w-100">
-                                    <small>Doctors Note</small>
-                                </button>
-                            </div>
+                                    <button class="btn btn-success text-white rounded-pill 2px w-100">
+                                        <small>Doctors Note</small>
+                                    </button>
+                                </div>
 
-                            <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #3ecc4e;">
-                                    <small>View Uploads</small>
-                                </button>
-                            </div>*@
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #3ecc4e;">
+                                        <small>View Uploads</small>
+                                    </button>
+                                </div>*@
                             @*<div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #3ecc4e;">
-                                    <small>Encounter</small>
-                                </button>
-                            </div>*@
+                                    <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #3ecc4e;">
+                                        <small>Encounter</small>
+                                    </button>
+                                </div>*@
                             @*<div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #FFD43B;">
-                                    <small>Orders</small>
-                                </button>
-                            </div>*@
-                            
+                                    <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #FFD43B;">
+                                        <small>Orders</small>
+                                    </button>
+                                </div>*@
+
                         </div>
                         <div class="text-end d-md-flex justify-content-md-end">
                             <span>Chat With:</span>
@@ -237,6 +238,6 @@
 
             </div>
         }
+        </div>
     </div>
-</div>
-<!--End Mobile Screen View of table-->
+    <!--End Mobile Screen View of table-->

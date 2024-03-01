@@ -23,7 +23,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
 
         public ViewCaseModel GetRequestForViewCase(int id)
         {
-            var n = _context.Requests.FirstOrDefault(E=>E.Requestid == id);
+            var n = _context.Requests.FirstOrDefault(E => E.Requestid == id);
             var l = _context.Requestclients.FirstOrDefault(E => E.Requestid == id);
             var region = _context.Regions.FirstOrDefault(E => E.Regionid == l.Regionid);
             ViewCaseModel requestforviewcase = new()
@@ -55,7 +55,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 if (client != null)
                 {
                     client.Firstname = model.FirstName;
-                    client.Lastname = model.LastName;   
+                    client.Lastname = model.LastName;
                     client.Email = model.Email;
                     client.Phonenumber = model.PhoneNumber;
                     client.Intdate = model.DateOfBirth.Day; //or date

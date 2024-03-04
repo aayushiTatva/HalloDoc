@@ -102,7 +102,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="ViewUploads" class="dropdown-item" asp-route-id="@item.RequestId">
                                     <i class="fa-solid fa-file-arrow-up me-2"></i>
                                     View Uploads
                                 </a>
@@ -114,7 +114,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" @*onclick="model_Case(@index)"*@ data-bs-toggle="modal" data-bs-target="#TransferRequest" @*data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName"*@>
                                     <i class="fa-regular fa-rectangle-list me-1"></i>
                                     Transfer
                                 </a>
@@ -248,3 +248,16 @@
         </div>
     </div>
     <!--End Mobile Screen View of table-->
+<script>
+    function model_Case(id) {
+        console.log(id);
+        var modeldata = @Html.Raw(Json.Serialize(Model))
+            document.getElementById('RequestId_Input_ModalCancelCase').value = modeldata[id].requestId;
+        document.getElementById('PatientName_ModelCancelCase').innerText = modeldata[id].patientName;
+        document.getElementById('RequestID_Input_ModelAssignCase').value = modeldata[id].requestId;
+        document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestId;
+        document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;
+        console.log(document.getElementById('RequestID_Input_ModelAssignCase').value);
+        console.log(document.getElementById('PatientName_ModelBlockCase').innerText);
+    }
+</script>

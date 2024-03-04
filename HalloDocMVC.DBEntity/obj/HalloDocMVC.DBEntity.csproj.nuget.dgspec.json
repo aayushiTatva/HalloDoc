@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pce116\\Downloads\\HalloDoc2\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj": {}
+    "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pce116\\Downloads\\HalloDoc2\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj": {
+    "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pce116\\Downloads\\HalloDoc2\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
+        "projectUniqueName": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
         "projectName": "HalloDocMVC.DBEntity",
-        "projectPath": "C:\\Users\\pce116\\Downloads\\HalloDoc2\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
+        "projectPath": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC.DBEntity\\HalloDocMVC.DBEntity.csproj",
         "packagesPath": "C:\\Users\\pce116\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pce116\\Downloads\\HalloDoc2\\HalloDocMVC.DBEntity\\obj\\",
+        "outputPath": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC.DBEntity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pce116\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,10 +40,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "AspNetCoreHero.ToastNotification": {
-              "target": "Package",
-              "version": "[1.1.0, )"
-            },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.11, )"

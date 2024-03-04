@@ -90,14 +90,12 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             _context.Requests.Update(request);
             _context.SaveChanges();
 
-            Requeststatuslog rsl = new Requeststatuslog
+            Requeststatuslog rsl = new ()
             {
                 Requestid = RequestId,
                 Physicianid = ProviderId,
-                Notes = notes,
 
                 Createddate = DateTime.Now,
-                Status = 2
             };
             _context.Requeststatuslogs.Update(rsl);
             _context.SaveChanges();

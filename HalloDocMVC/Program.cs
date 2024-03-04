@@ -1,4 +1,5 @@
 using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using HalloDocMVC.DBEntity.DataContext;
 using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
@@ -34,3 +35,4 @@ app.MapControllerRoute(
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
 
 app.Run();
+app.UseNotyf();

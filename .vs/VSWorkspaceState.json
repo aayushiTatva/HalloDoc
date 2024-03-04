@@ -3,7 +3,6 @@
     "",
     "\\HalloDocMVC",
     "\\HalloDocMVC.DBEntity",
-    "\\HalloDocMVC.DBEntity\\DataContext",
     "\\HalloDocMVC.DBEntity\\ViewModels",
     "\\HalloDocMVC.DBEntity\\ViewModels\\AdminPanel",
     "\\HalloDocMVC.Repositeries",
@@ -12,6 +11,6 @@
     "\\HalloDocMVC\\wwwroot",
     "\\HalloDocMVC\\wwwroot\\js"
   ],
-  "SelectedNode": "\\HalloDocMVC.Repositeries\\Repository\\ComboBox.cs",
+  "SelectedNode": "\\HalloDocMVC\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

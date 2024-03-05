@@ -13,16 +13,16 @@
                     </small>
                     <input type="hidden" name="requestid" id="RequestID_Input_ModelAssignCase" />
                     <div class="form-floating my-3">
-                        <select name="region" class="form-select form-control shadow-none" id="region" required data-allow-clear="true" tabindex="-1" onchange="myFunction()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
+                        <select name="region" class="form-select form-control shadow-none" id="regionName" required data-allow-clear="true" tabindex="-1" onchange="assignFunction()" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))">
                             <option>All Region</option>
                         </select>
-                        <label for="Region">Narrow search by Region</label>
+                        <label for="regionName">Narrow search by Region</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <select name="ProviderId" class="form-select form-control shadow-none" id="provider" required data-allow-clear="true" tabindex="-1">
+                        <select name="ProviderId" class="form-select form-control shadow-none" id="providerName" required data-allow-clear="true" tabindex="-1">
                             <option>Select Physician</option>
                         </select>
-                        <label for="provider">Select Physician</label>
+                        <label for="providerName">Select Physician</label>
                     </div>
                     <div class="form-floating mb-3">
                         <textarea name="Notes" class="form-control shadow-none" placeholder="Leave a comment here" id="Description" style="height: 100px"></textarea>
@@ -39,8 +39,9 @@
 </div>
 
 <script type="text/javascript">
-    function myFunction() {
-        var region = $("#region").val();
+    function assignFunction() {
+        var region = $("#regionName").val();
+        console.log(region);
         $.ajax({
             type: "POST",
             url: '@Url.Action("ProviderbyRegion", "Actions")?Regionid=' + region,
@@ -51,7 +52,7 @@
                 for (var i = 0; i < response.length; i++) {
                     s += '<option value="' + response[i].physicianid + '">' + response[i].firstname + ' ' + response[i].lastname + '</option>';
                 }
-                $("#provider").html(s);
+                $("#providerName").html(s);
             },
             error: function () {
                 alert("Error while checking Physician.");

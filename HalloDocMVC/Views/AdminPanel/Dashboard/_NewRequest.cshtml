@@ -94,9 +94,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item " onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#TrCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
+                                <a class="dropdown-item " onclick="model_Case(@index)" data-bs-toggle="modal" data-bs-target="#CancelCase" data-bs-requestid="@item.RequestId" data-bs-patientname="@item.PatientName">
                                     <i class="fa-regular fa-circle-xmark me-1"></i>
-                                    TransferCase
+                                    Cancel Case
                                 </a>
                             </li>
                             <li>
@@ -229,10 +229,6 @@
         document.getElementById('RequestID_Input_ModelAssignCase').value = modeldata[id].requestId;
         document.getElementById('RequestID_Input_ModelBlockCase').value = modeldata[id].requestId;
         document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;
-        document.getElementById('RequestID_Input_ModelTrCase').value = modeldata[id].requestId;
-        console.log(document.getElementById('RequestID_Input_ModelTrCase').value);
-        console.log(document.getElementById('RequestID_Input_ModelAssignCase').value);
-        console.log(document.getElementById('PatientName_ModelBlockCase').innerText);
     }
 </script>
 

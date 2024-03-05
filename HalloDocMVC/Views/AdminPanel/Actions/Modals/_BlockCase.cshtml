@@ -36,11 +36,11 @@
                 <h5 class="modal-title" id="exampleModalLabel">Confirm Block</h5>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form asp-controller="Actions" asp-action="BlockCase">
+            @*<form asp-controller="Actions" asp-action="BlockCase">*@
                 <input type="hidden" value="" id="RequestID_Input_ModelBlockCase" name="requestid" />
                 <div class="modal-body">
                     <p class="text-secondary">
-                        Patient name :
+                        Clear case in block page without form tag
                         <span id="PatientName_ModelBlockCase" class="text-info"></span>
                     </p>
 
@@ -53,7 +53,7 @@
                     <button type="submit" class=" btn btn-info text-white">Confirm</button>
                     <button type="button" class="btn border border-info text-info shadow-none" data-bs-dismiss="modal">Close</button>
                 </div>
-            </form>
+            @*</form>*@
         </div>
     </div>
 </div>

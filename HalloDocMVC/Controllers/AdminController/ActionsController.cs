@@ -103,8 +103,21 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("Index", "Dashboard");
         }
         #endregion BlockCase
-
-        public async Task<IActionResult> ViewNotes()
+        #region TransferPhysician
+        public async Task<IActionResult> TransferPhysician(int requestid, int ProviderId, string Notes)
+        {
+            if (await _IActions.TransferPhysician(requestid, ProviderId, Notes))
+            {
+                _INotyfService.Success("Physician Transferred Successfully.");
+            }
+            else
+            {
+                _INotyfService.Error("Physician Not Transferred.");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion TransferPhysician
+        /*public async Task<IActionResult> ViewNotes()
         {
             return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml");
         }
@@ -115,10 +128,7 @@ namespace HalloDocMVC.Controllers.AdminController
         public async Task<IActionResult> SendOrder()
         {
             return View("~/Views/AdminPanel/Actions/SendOrder.cshtml");
-        }
-        public async Task<IActionResult> TransferRequest()
-        {
-            return View("~/Views/AdminPanel/Actions/Modals/TransferRequest.cshtml");
-        }
+        }*/
+
     }
 }

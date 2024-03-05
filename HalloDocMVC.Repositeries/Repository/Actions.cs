@@ -104,6 +104,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
 
 
         }
+        #region Cancel Case
         public bool CancelCase(int RequestId, string Note, string CaseTag)
         {
             try
@@ -133,6 +134,8 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 return false;
             }
         }
+        #endregion
+        #region Block Case
         public bool BlockCase(int RequestID, string Note)
         {
             try
@@ -166,5 +169,31 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 return false;
             }
         }
+        #endregion
+        #region TransferPhysician
+        public async Task<bool> TransferPhysician(int RequestId, int ProviderId, string Note)
+        {
+            var request = await _context.Requests.FirstOrDefaultAsync(req => req.Requestid == RequestId);
+
+            Requeststatuslog rsl = new()
+            {
+                Requestid = RequestId,
+                Status = 2,
+                Physicianid = request.Physicianid,
+                Transtophysicianid = ProviderId,
+                Notes = Note,
+                Createddate = DateTime.Now
+            };
+            _context.Requeststatuslogs.Update(rsl);
+            _context.SaveChanges();
+
+            request.Physicianid = ProviderId;
+            request.Status = 2;
+            _context.Requests.Update(request);
+            _context.SaveChanges();
+            return true;
+        }
+        #endregion TransferPhysician
+
     }
 }

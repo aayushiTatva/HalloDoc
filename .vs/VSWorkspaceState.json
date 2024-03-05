@@ -2,15 +2,17 @@
   "ExpandedNodes": [
     "",
     "\\HalloDocMVC",
-    "\\HalloDocMVC.DBEntity",
-    "\\HalloDocMVC.DBEntity\\ViewModels",
-    "\\HalloDocMVC.DBEntity\\ViewModels\\AdminPanel",
     "\\HalloDocMVC.Repositeries",
     "\\HalloDocMVC.Repositeries\\Repository",
     "\\HalloDocMVC.Repositeries\\Repository\\Interface",
+    "\\HalloDocMVC\\Views",
+    "\\HalloDocMVC\\Views\\AdminPanel",
+    "\\HalloDocMVC\\Views\\AdminPanel\\Actions",
+    "\\HalloDocMVC\\Views\\AdminPanel\\Actions\\Modals",
+    "\\HalloDocMVC\\Views\\AdminPanel\\Dashboard",
     "\\HalloDocMVC\\wwwroot",
     "\\HalloDocMVC\\wwwroot\\js"
   ],
-  "SelectedNode": "\\HalloDocMVC\\Program.cs",
+  "SelectedNode": "\\HalloDocMVC\\HalloDocMVC.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HalloDocMVC.Controllers.AdminController
 {
+    [CheckAdminAccess]
     public class DashboardController : Controller
     {
         #region Configuration
@@ -91,6 +92,13 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion _SearchResult
 
-
+        public async Task<IActionResult> Login()
+        {
+            return View("~/Views/AdminPanel/Dashboard/Login.cshtml");
+        }
+        public async Task<IActionResult> ResetPassword()
+        {
+            return View("~/Views/AdminPanel/Dashboard/ResetPassword.cshtml");
+        }
     }
 }

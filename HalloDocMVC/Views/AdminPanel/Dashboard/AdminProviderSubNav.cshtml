@@ -1,0 +1,46 @@
+﻿﻿@{
+    string path = Context.Request.Path;
+}
+
+<nav class="navbar px-5 navbar-expand-md bg-white shadow mb-2 border border-top d-none d-md-block">
+    <div class="collapse navbar-collapse my-2" id="navbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item me-3">
+                <a class="nav-link text-dark @(path.StartsWith("/AdminDashBoard") ? "activesbnav" : "")" aria-current="page" asp-controller="AdminDashBoard" asp-action="Index">Dashboard</a>
+            </li>
+            <li class="nav-item me-3">
+                <a class="nav-link text-dark @(path.StartsWith("/Profile") ? "activesbnav" : "")" asp-action="Index" asp-controller="Profile">My Profile</a>
+            </li>
+            @if (CV.RoleID() == "1")
+            {
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/ProviderLocation") ? "activesbnav" : "")" asp-action="Index" asp-controller="ProviderLocation">Provider Location</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/Providers") ? "activesbnav" : "")" asp-action="Index" asp-controller="Providers">Providers</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/Partners") ? "activesbnav" : "")" asp-action="Index" asp-controller="Partners">Partners</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/Access") ? "activesbnav" : "")" asp-action="Index" asp-controller="Access">Access</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/Records") ? "activesbnav" : "")" asp-action="Index" asp-controller="Records">Records</a>
+                </li>
+            }
+            @if (CV.RoleID() == "2")
+            {
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/Chat") ? "activesbnav" : "")" asp-action="" asp-controller="">Chat</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/Invoicing") ? "activesbnav" : "")" asp-action="" asp-controller="">Invoicing</a>
+                </li>
+                <li class="nav-item me-3">
+                    <a class="nav-link text-dark @(path.StartsWith("/Schedule") ? "activesbnav" : "")" asp-action="" asp-controller="">My Schedule</a>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

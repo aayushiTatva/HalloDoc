@@ -1,7 +1,9 @@
 ﻿using HalloDocMVC.DBEntity.DataContext;
 using HalloDocMVC.DBEntity.DataModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

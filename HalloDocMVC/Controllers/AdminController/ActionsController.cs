@@ -1,4 +1,5 @@
-﻿using AspNetCoreHero.ToastNotification.Abstractions;
+﻿using AspNetCore;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
@@ -46,7 +47,8 @@ namespace HalloDocMVC.Controllers.AdminController
             }
         }
         #endregion EditCase
-
+      
+       
         #region AssignProvider
         public async Task<IActionResult> AssignProvider(int requestid, int ProviderId, string Notes)
         {
@@ -103,6 +105,23 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("Index", "Dashboard");
         }
         #endregion BlockCase
+
+        #region ClearCase
+        public IActionResult ClearCase(int RequestID)
+        {
+            bool ClearCase = _IActions.ClearCase(RequestID);
+            if (ClearCase)
+            {
+                _INotyfService.Success("Cleared Case Successfully");
+            }
+            else
+            {
+                _INotyfService.Error("Case Not Cleared");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion
+
         #region TransferPhysician
         public async Task<IActionResult> TransferPhysician(int requestid, int ProviderId, string Notes)
         {
@@ -117,10 +136,42 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("Index", "Dashboard");
         }
         #endregion TransferPhysician
-        /*public async Task<IActionResult> ViewNotes()
+
+
+        #region View_Notes
+        public IActionResult ViewNotes(int id)
         {
-            return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml");
+            ViewNotesModel vnm = _IActions.getNotes(id);
+            return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml", vnm);
         }
+        #endregion
+
+        #region Edit_Notes
+        public IActionResult EditViewNotes(int RequestID, string? adminnotes, string? physiciannotes)
+        {
+            if (adminnotes != null || physiciannotes != null)
+            {
+                bool result = _IActions.EditViewNotes(adminnotes, physiciannotes, RequestID);
+                if (result)
+                {
+                    _INotyfService.Success("Notes Updated successfully...");
+                    return RedirectToAction("ViewNotes", new { id = RequestID });
+                }
+                else
+                {
+                    _INotyfService.Error("Notes Not Updated");
+                    return View("~/Views/AdminPanel/Actions/ViewNotes.cshtml");
+                }
+            }
+            else
+            {
+                _INotyfService.Information("Please Select one of the note!!");
+                TempData["Errormassage"] = "Please Select one of the note!!";
+                return RedirectToAction("ViewNotes", new { id = RequestID });
+            }
+        }
+        #endregion
+        /*
         public async Task<IActionResult> ViewUploads()
         {
             return View("~/Views/AdminPanel/Actions/ViewUploads.cshtml");

@@ -1,5 +1,6 @@
 ﻿using AspNetCore;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using AspNetCoreHero.ToastNotification.Notyf;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
@@ -48,7 +49,6 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion EditCase
       
-       
         #region AssignProvider
         public async Task<IActionResult> AssignProvider(int requestid, int ProviderId, string Notes)
         {
@@ -137,7 +137,6 @@ namespace HalloDocMVC.Controllers.AdminController
         }
         #endregion TransferPhysician
 
-
         #region View_Notes
         public IActionResult ViewNotes(int id)
         {
@@ -171,15 +170,60 @@ namespace HalloDocMVC.Controllers.AdminController
             }
         }
         #endregion
-        /*
-        public async Task<IActionResult> ViewUploads()
-        {
-            return View("~/Views/AdminPanel/Actions/ViewUploads.cshtml");
-        }
-        public async Task<IActionResult> SendOrder()
-        {
-            return View("~/Views/AdminPanel/Actions/SendOrder.cshtml");
-        }*/
 
+        #region ViewDocuments
+        public async Task<IActionResult> ViewDocuments(int? id)
+        {
+            ViewUploadModel vum = await _IActions.GetDocument(id);
+            return View("~/Views/AdminPanel/Actions/ViewUploads.cshtml", vum);
+        }
+        #endregion
+
+        #region UploadDocuments
+        public IActionResult UploadDocuments(int Requestid, IFormFile file)
+        {
+            if(_IActions.UploadDocuments(Requestid, file))
+            {
+                _INotyfService.Success("File Uploaded Successfully");
+            }
+            else
+            {
+                _INotyfService.Error("File mot uploaded");
+            }
+            return RedirectToAction("ViewDocuments", "Actions", new { id = Requestid });
+        }
+        #endregion
+        #region DeleteFile
+        public async Task<IActionResult>DeleteFile(int? id, int Requestid)
+        {
+            if(await _IActions.DeleteDocuments(id.ToString()))
+            {
+                _INotyfService.Success("File Deleted Successfully");
+            }
+            else
+            {
+                _INotyfService.Error("File Not deleted");
+            }
+            return RedirectToAction("ViewDocuments", "Actions", new { id = Requestid });
+        }
+        #endregion
+        #region DeleteAllFiles
+        public async Task<IActionResult> DeleteAllFiles(string deleteids, int Requestid)
+        {
+            if (await _IActions.DeleteDocuments(deleteids))
+            {
+                _INotyfService.Success("All Files have been deleted successfully");
+            }
+            else
+            {
+                _INotyfService.Error("All Files have not been deleted successfully");
+            }
+            return RedirectToAction("ViewDocuments", "Actions", new { id = Requestid });
+        }
+        #endregion
+        public IActionResult SendOrder()
+        {
+            return View("../AdminPanel/Actions/SendOrder");
+        }
     }
 }

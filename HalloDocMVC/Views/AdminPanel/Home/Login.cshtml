@@ -5,26 +5,26 @@
     Layout = "_LayoutLogin";
 }
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6">
-            <img class="imgdiv mt-5 align-items-center" src="~/images/poster.jpg" />
+    <div class="row min-vh-100 d-flex">
+        <div class=" col-md-6 mt-5">
+            <img src="~/images/poster.jpg" style="height: 100%; width: 100%;" />
         </div>
         <div class="col-md-6">
-            <div class="row align-self-center mt-5 ms-5 ps-5">
-                <div class="align-items-center ps-5 ms-5">
-                    <img class=" align-items-center mt-5 ms-2"src="~/images/Patient site 1.png"><br/>
-                    <h2 class="ms-2">Login to Your Account</h2><br/>
-                    <form class="" asp-action="Validate" asp-controller="Home" method="post" >
-                        <div class="form-floating mb-3 ms-2" >
-                        <input type="email" class="form-control usernameLogin " id="email" name="Email" placeholder="username" style="width:380px;">
+            <div class="row min-vh-100 maindiv" >
+                <div class="centerdiv" >
+                    <img class="" src="~/images/Patient site 1.png" />
+                    <h2><b>Login To Your Account</b></h2>
+                    <form class="d-flex flex-column justify-content-between" asp-action="Validate" asp-controller="Home" method="post">
+                        <div class="form-floating align-self-center mb-2">
+                            <input type="email" class="form-control usernameLogin " id="email" name="Email" placeholder="username" style="width:380px;">
                             <i class="fa fa-user-circle userLogin"></i>
                             <label for="floatingInput">Username</label>
                         </div>
-                        <div class="form-floating mb-3 ms-2">
+                        <div class="form-floating align-self-center mb-2">
                             <input type="password" class="form-control passwordLogin " name="PasswordHash" placeholder="password" style="width:380px;">
                             <label for="floatingInput">Password</label>
                         </div>
-                        <button type="submit" class="logInBtnLogin">Log In</button>
+                        <button type="submit" class="logInBtnLogin align-self-center">Log In</button>
                         <div class="forgotPasswdLogin">
                             <a id="forgotLogin" asp-controller="Dashboard" asp-action="ResetPassword"><b>Forgot Password ?</b></a>
                         </div>

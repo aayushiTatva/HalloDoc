@@ -1,6 +1,7 @@
 ﻿//
 using HalloDocMVC.DBEntity.DataContext;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,8 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         public bool ClearCase(int RequestID);
         public ViewNotesModel getNotes(int id);
         public bool EditViewNotes(string? adminnotes, string? physiciannotes, int RequestID);
+        Task<ViewUploadModel> GetDocument(int? id);
+        public Boolean UploadDocuments(int Requestid, IFormFile formFile);
+        Task<bool> DeleteDocuments(string ids);
     }
 }

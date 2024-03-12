@@ -1,5 +1,6 @@
 ﻿/* Admin Dashboard */
-
+/* Sweet Alert */
+@import "https://cdn.jsdelivr.net/npm/@@sweetalert2/theme-dark@5/dark.css";
 .activeNavItem {
     color: #0DCAF0 !important;
     font-weight: 600;

@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\HalloDocMVC",
-    "\\HalloDocMVC.Repositeries",
-    "\\HalloDocMVC.Repositeries\\Repository",
-    "\\HalloDocMVC.Repositeries\\Repository\\Interface",
+    "\\HalloDocMVC\\Controllers",
+    "\\HalloDocMVC\\Controllers\\AdminController",
     "\\HalloDocMVC\\Views",
     "\\HalloDocMVC\\Views\\AdminPanel",
     "\\HalloDocMVC\\Views\\AdminPanel\\Actions",
@@ -13,6 +12,6 @@
     "\\HalloDocMVC\\wwwroot",
     "\\HalloDocMVC\\wwwroot\\js"
   ],
-  "SelectedNode": "\\HalloDocMVC\\Views\\AdminPanel\\Dashboard\\DashboardSubPart.cshtml",
+  "SelectedNode": "\\HalloDocMVC\\Views\\AdminPanel\\Dashboard\\_NewRequest.cshtml",
   "PreviewInSolutionExplorer": false
 }

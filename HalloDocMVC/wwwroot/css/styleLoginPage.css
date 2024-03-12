@@ -12,15 +12,32 @@
     float: right;
 }
 
-/*.usernameLogin {
-    position: relative;
+.poster {
+    height: 100%;
+    width: 100%;
+}
+
+.maindiv {
+    text-align: center;
+}
+
+.centerdiv {
+    display: inline-block;
+    margin-top: 20%;
+}
+
+.usernamelogin {
     width: 380px;
-}*/
+}
+
+.passwordlogin {
+    width: 380px;
+}
 
 .userLogin {
     position: absolute;
     margin-top: -40px;
-    margin-left: 350px;
+    margin-left: 160px;
 }
                                                                                        
 .logInBtnLogin {

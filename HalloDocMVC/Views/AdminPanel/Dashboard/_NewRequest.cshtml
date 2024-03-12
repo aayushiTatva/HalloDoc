@@ -105,12 +105,6 @@
                                     View Case                                                                           
                                 </a>
                             </li>
-                            @*<li>
-                                <a asp-controller="Dashboard" asp-action="Login" class="dropdown-item " >
-                                    <i class="fa-regular fa-circle-xmark me-1"></i>
-                                    Login
-                                </a>
-                            </li>*@
                             <li>
                                 <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-regular fa-file-lines me-2"></i>
@@ -237,4 +231,5 @@
         document.getElementById('PatientName_ModelBlockCase').innerText = modeldata[id].patientName;
     }
 </script>
+
 

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ESkjvp3/7MXgMkSyqMcOb0rDGPmawIs+kT6LwEYL78Cl4fBmZM3hmi5KE1cqSlmHFpoQM8I2si/yJFteA4royA==",
+  "dgSpecHash": "XSvczOmvVzNbzTU9jTOwtn0i6rBGNuFzXvZRsTpIAT6EE0ZOBHOouItkTtjuDAB3Fe/7lKGqg6JdDq5eXVauRw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC.Repositeries\\HalloDocMVC.Repositories.Admin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pce116\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
+    "C:\\Users\\pce116\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.11\\microsoft.entityframeworkcore.analyzers.7.0.11.nupkg.sha512",
@@ -20,7 +21,8 @@
     "C:\\Users\\pce116\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
-    "C:\\Users\\pce116\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512"
+    "C:\\Users\\pce116\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
+    "C:\\Users\\pce116\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
   ],
   "logs": []
 }

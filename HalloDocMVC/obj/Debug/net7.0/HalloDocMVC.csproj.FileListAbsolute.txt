@@ -411,3 +411,11 @@ C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\
 C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\MailKit.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\MimeKit.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\System.Formats.Asn1.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\System.Text.Encoding.CodePages.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Text.Encoding.CodePages.dll

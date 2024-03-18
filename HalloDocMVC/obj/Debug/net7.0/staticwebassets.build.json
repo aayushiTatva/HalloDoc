@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ufZL4wqR4BO7PsqhaJ8tWtb2aXRhGo/8+QE/lILCeV8=",
+  "Hash": "VAQbtXmQgDSxgsa4v8Gflr4swtVOpRP7ZEwOZsLIu9E=",
   "Source": "HalloDocMVC",
   "BasePath": "_content/HalloDocMVC",
   "Mode": "Default",
@@ -3466,6 +3466,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Upload\\108\\review-agreement-page-20240312120816.png"
+    },
+    {
+      "Identity": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\112\\Fig67.Submit Information Some one else-20240315094839.jpg",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/112/Fig67.Submit Information Some one else-20240315094839.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\112\\Fig67.Submit Information Some one else-20240315094839.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\112\\Send Link Pop-up-20240318015945.png",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/112/Send Link Pop-up-20240318015945.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\112\\Send Link Pop-up-20240318015945.png"
     },
     {
       "Identity": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\96\\My schedule-20240311041926.png",

@@ -1,5 +1,4 @@
-﻿//Implementation :logic of page 
-using HalloDocMVC.DBEntity.DataContext;
+﻿using HalloDocMVC.DBEntity.DataContext;
 using HalloDocMVC.DBEntity.DataModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
@@ -15,17 +14,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Routing.Constraints;
 using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.ViewUploadModel;
+using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Ocsp;
 
 namespace HalloDocMVC.Repositories.Admin.Repository
 {
     public class Actions : IActions
     {
         private readonly HalloDocContext _context;
-        public Actions(HalloDocContext context)
+        private readonly EmailConfiguration _emailConfiguration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public Actions(HalloDocContext context, EmailConfiguration emailConfiguration, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _emailConfiguration = emailConfiguration;
+            _httpContextAccessor = httpContextAccessor;
         }
 
+        #region GetRequestForViewCase
         public ViewCaseModel GetRequestForViewCase(int id)
         {
             var n = _context.Requests.FirstOrDefault(E => E.Requestid == id);
@@ -48,6 +54,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             };
             return requestforviewcase;
         }
+        #endregion
         #region EditCase
         public bool EditCase(ViewCaseModel model)
         {
@@ -99,7 +106,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             _context.Requests.Update(request);
             _context.SaveChanges();
 
-            Requeststatuslog rsl = new ()
+            Requeststatuslog rsl = new()
             {
                 Requestid = RequestId,
                 Physicianid = ProviderId,
@@ -214,7 +221,7 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             }
         }
         #endregion
-        
+
         #region TransferPhysician
         public async Task<bool> TransferPhysician(int RequestId, int ProviderId, string Note)
         {
@@ -246,27 +253,27 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             var request = _context.Requests.FirstOrDefault(e => e.Requestid == id);
             var symptoms = _context.Requestclients.FirstOrDefault(e => e.Requestid == id);
             var transfer = (from rs in _context.Requeststatuslogs
-                               join py in _context.Physicians on rs.Physicianid equals py.Physicianid into pyGroup
-                               from py in pyGroup.DefaultIfEmpty()
-                               join p in _context.Physicians on rs.Transtophysicianid equals p.Physicianid into pGroup
-                               from p in pGroup.DefaultIfEmpty()
-                               join a in _context.Admins on rs.Adminid equals a.Adminid into aGroup
-                               from a in aGroup.DefaultIfEmpty()
-                               where rs.Requestid == id && rs.Status == 2
-                               select new TransferNotesModel
-                               {
-                                   TransToPhysician = p.Firstname,
-                                   Admin = a.Firstname,
-                                   Physician = py.Firstname,
-                                   RequestId = rs.Requestid,
-                                   Notes = rs.Notes,
-                                   Status = rs.Status,
-                                   PhysicianId = rs.Physicianid,
-                                   CreatedDate = rs.Createddate,
-                                   RequestStatusLogId = rs.Requeststatuslogid,
-                                   TransToAdmin = rs.Transtoadmin,
-                                   TransToPhysicianId = rs.Transtophysicianid
-                               }).ToList();
+                            join py in _context.Physicians on rs.Physicianid equals py.Physicianid into pyGroup
+                            from py in pyGroup.DefaultIfEmpty()
+                            join p in _context.Physicians on rs.Transtophysicianid equals p.Physicianid into pGroup
+                            from p in pGroup.DefaultIfEmpty()
+                            join a in _context.Admins on rs.Adminid equals a.Adminid into aGroup
+                            from a in aGroup.DefaultIfEmpty()
+                            where rs.Requestid == id && rs.Status == 2
+                            select new TransferNotesModel
+                            {
+                                TransToPhysician = p.Firstname,
+                                Admin = a.Firstname,
+                                Physician = py.Firstname,
+                                RequestId = rs.Requestid,
+                                Notes = rs.Notes,
+                                Status = rs.Status,
+                                PhysicianId = rs.Physicianid,
+                                CreatedDate = rs.Createddate,
+                                RequestStatusLogId = rs.Requeststatuslogid,
+                                TransToAdmin = rs.Transtoadmin,
+                                TransToPhysicianId = rs.Transtophysicianid
+                            }).ToList();
             var cancelbyprovider = _context.Requeststatuslogs.Where(e => e.Requestid == id && (e.Transtoadmin != null));
             var cancelbyadmin = _context.Requeststatuslogs.Where(e => e.Requestid == id && (e.Status == 7 || e.Status == 3));
             var model = _context.Requestnotes.FirstOrDefault(e => e.Requestid == id);
@@ -343,87 +350,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         }
         #endregion
 
-        #region GetDocuments
-        public async Task<ViewUploadModel> GetDocument(int? id)
-        {
-            var requests = _context.Requests.FirstOrDefault(req => req.Requestid == id );
-            var requestClient = _context.Requestclients.FirstOrDefault(reqclient => reqclient.Requestid == id);
-            ViewUploadModel upload = new ViewUploadModel();
-            /*upload.ConfirmationNumber = requests.Confirmationnumber;*/
-            upload.RequestId = requests.Requestid;
-            upload.FirstName = requestClient.Firstname;
-            upload.LastName = requestClient.Lastname;
-            var result = from requestWiseFile in _context.Requestwisefiles
-                         join request in _context.Requests on requestWiseFile.Requestid equals request.Requestid
-                         join physician in _context.Physicians on request.Physicianid equals physician.Physicianid into physicianGroup
-                         from phys in physicianGroup.DefaultIfEmpty()
-                         join admin in _context.Admins on requestWiseFile.Adminid equals admin.Adminid into adminGroup
-                         from adm in adminGroup.DefaultIfEmpty()
-                         where request.Requestid == id && requestWiseFile.Isdeleted == new BitArray(1)
-                         select new
-                         {
-                             Uploader = requestWiseFile.Physicianid != null ? phys.Firstname : (requestWiseFile.Adminid != null ? adm.Firstname : request.Firstname),
-                             IsDeleted = requestWiseFile.Isdeleted.ToString(),
-                             RequestwisefilesId = requestWiseFile.Requestwisefileid,
-                             Status = requestWiseFile.Doctype,
-                             CreatedDate = requestWiseFile.Createddate,
-                             filename = requestWiseFile.Filename,
-                         };
-            List<Documents> doclist = new List<Documents>();
-            foreach (var item in result)
-            {
-                doclist.Add(new Documents
-                {
-                    Uploader = item.Uploader,
-                    isDeleted = item.IsDeleted,
-                    RequestwisefileId = item.RequestwisefilesId,
-                    Status = item.Status,
-                    CreatedDate = item.CreatedDate,
-                    filename = item.filename
-                });
-            }
-            upload.documents = doclist;
-            return upload;
-        }
-        #endregion
-
-        #region UploadDocuments
-        public Boolean UploadDocuments(int Requestid , IFormFile file)
-        {
-            string upload = SaveFileModel.UploadDocument(file, Requestid);
-            var requestwisefile = new Requestwisefile
-            {
-                Requestid = Requestid,
-                Filename = upload,
-                Isdeleted = new BitArray(1),
-                Adminid = 1,
-                Createddate = DateTime.Now
-            };
-            _context.Requestwisefiles.Add(requestwisefile);
-            _context.SaveChanges();
-            return true;
-        }
-        #endregion
-        #region DeleteDocuments
-        public async Task<bool> DeleteDocuments(string ids)
-        {
-            List<int> delete = ids.Split(',').Select(int.Parse).ToList();
-            foreach (int item in delete)
-            {
-                if(item>0)
-                {
-                    var data = await _context.Requestwisefiles.Where(e => e.Requestwisefileid == item).FirstOrDefaultAsync();
-                    if(data != null)
-                    {
-                        data.Isdeleted[0] = true;
-                        _context.Requestwisefiles.Update(data);
-                        _context.SaveChanges();
-                    }
-                }
-            }
-            return true;
-        }
-        #endregion 
         #region Edit_notes
         public bool EditViewNotes(string? adminnotes, string? physiciannotes, int RequestID)
         {
@@ -489,5 +415,276 @@ namespace HalloDocMVC.Repositories.Admin.Repository
         }
         #endregion
 
+        #region GetDocuments
+        public async Task<ViewUploadModel> GetDocument(int? id)
+        {
+            var requests = _context.Requests.FirstOrDefault(req => req.Requestid == id);
+            var requestClient = _context.Requestclients.FirstOrDefault(reqclient => reqclient.Requestid == id);
+            ViewUploadModel upload = new ViewUploadModel();
+            /*upload.ConfirmationNumber = requests.Confirmationnumber;*/
+            upload.RequestId = requests.Requestid;
+            upload.FirstName = requestClient.Firstname;
+            upload.LastName = requestClient.Lastname;
+            var result = from requestWiseFile in _context.Requestwisefiles
+                         join request in _context.Requests on requestWiseFile.Requestid equals request.Requestid
+                         join physician in _context.Physicians on request.Physicianid equals physician.Physicianid into physicianGroup
+                         from phys in physicianGroup.DefaultIfEmpty()
+                         join admin in _context.Admins on requestWiseFile.Adminid equals admin.Adminid into adminGroup
+                         from adm in adminGroup.DefaultIfEmpty()
+                         where request.Requestid == id && requestWiseFile.Isdeleted == new BitArray(1)
+                         select new
+                         {
+                             Uploader = requestWiseFile.Physicianid != null ? phys.Firstname : (requestWiseFile.Adminid != null ? adm.Firstname : request.Firstname),
+                             IsDeleted = requestWiseFile.Isdeleted.ToString(),
+                             RequestwisefilesId = requestWiseFile.Requestwisefileid,
+                             Status = requestWiseFile.Doctype,
+                             CreatedDate = requestWiseFile.Createddate,
+                             filename = requestWiseFile.Filename,
+                         };
+            List<Documents> doclist = new List<Documents>();
+            foreach (var item in result)
+            {
+                doclist.Add(new Documents
+                {
+                    Uploader = item.Uploader,
+                    isDeleted = item.IsDeleted,
+                    RequestwisefileId = item.RequestwisefilesId,
+                    Status = item.Status,
+                    CreatedDate = item.CreatedDate,
+                    filename = item.filename
+                });
+            }
+            upload.documents = doclist;
+            return upload;
+        }
+        #endregion
+
+        #region UploadDocuments
+        public Boolean UploadDocuments(int Requestid, IFormFile file)
+        {
+            string upload = SaveFileModel.UploadDocument(file, Requestid);
+            var requestwisefile = new Requestwisefile
+            {
+                Requestid = Requestid,
+                Filename = upload,
+                Isdeleted = new BitArray(1),
+                Adminid = 1,
+                Createddate = DateTime.Now
+            };
+            _context.Requestwisefiles.Add(requestwisefile);
+            _context.SaveChanges();
+            return true;
+        }
+        #endregion
+
+        #region DeleteDocuments
+        public async Task<bool> DeleteDocuments(string ids)
+        {
+            List<int> delete = ids.Split(',').Select(int.Parse).ToList();
+            foreach (int item in delete)
+            {
+                if (item > 0)
+                {
+                    var data = await _context.Requestwisefiles.Where(e => e.Requestwisefileid == item).FirstOrDefaultAsync();
+                    if (data != null)
+                    {
+                        data.Isdeleted[0] = true;
+                        _context.Requestwisefiles.Update(data);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+            return true;
+        }
+        #endregion
+
+        #region SendOrder
+        public Healthprofessional SelectProfessionalById(int VendorId)
+        {
+            return _context.Healthprofessionals.FirstOrDefault(p => p.Vendorid == VendorId);
+        }
+        public bool SendOrders(SendOrderModel sendOrder)
+        {
+            try
+            {
+                Orderdetail od = new Orderdetail
+                {
+                    Requestid = sendOrder.RequestID,
+                    Vendorid = sendOrder.VendorID,
+                    Faxnumber = sendOrder.FaxNumber,
+                    Email = sendOrder.Email,
+                    Businesscontact = sendOrder.BusinessContact,
+                    Prescription = sendOrder.Prescription,
+                    Noofrefill = sendOrder.NoOfRefill,
+                    Createddate = DateTime.Now,
+                    Createdby = "02ae2720-3e7c-4fff-b83f-038f29013420"
+                };
+                _context.Orderdetails.Add(od);
+                _context.SaveChanges(true);
+                var req = _context.Requests.FirstOrDefault(e => e.Requestid == sendOrder.RequestID);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region SendAgreement
+        public Boolean SendAgreement(int Requestid)
+        {
+            var r = _context.Requestclients.FirstOrDefault(E => E.Requestid == Requestid);
+            var agreementUrl = "localhost:5171/SendAgreement?RequestID=" + Requestid;
+            _emailConfiguration.SendMail(r.Email, "Agreement for your request", $"<a href='{agreementUrl}'>Agree/ Disagree</a>");
+            return true;
+        }
+        #endregion
+
+        #region SendAgreementAccept
+        public Boolean SendAgreementAccept(int RequestId)
+        {
+            var req = _context.Requests.Find(RequestId);
+            if (req != null)
+            {
+                req.Status = 4;
+                _context.Requests.Update(req);
+                _context.SaveChanges();
+
+                Requeststatuslog rsl = new Requeststatuslog();
+                rsl.Requestid = RequestId;
+
+                rsl.Status = 4;
+
+                rsl.Createddate = DateTime.Now;
+
+                _context.Requeststatuslogs.Add(rsl);
+                _context.SaveChanges();
+            }
+            return true;
+        }
+        #endregion
+
+        #region SendAgreementReject
+        public Boolean SendAgreementReject(int RequestId, string Notes)
+        {
+            var request = _context.Requests.Find(RequestId);
+            if (request != null)
+            {
+                request.Status = 7;
+                _context.Requests.Update(request);
+                _context.SaveChanges();
+
+                Requeststatuslog rsl = new Requeststatuslog();
+                rsl.Requestid = RequestId;
+                rsl.Status = 7;
+                rsl.Notes = Notes;
+                rsl.Createddate = DateTime.Now;
+                _context.Requeststatuslogs.Add(rsl);
+                _context.SaveChanges();
+            }
+            return true;
+        }
+        #endregion
+
+        #region CloseCase
+        public CloseCaseModel GetRequestForCloseCase(int RequestID)
+        {
+            CloseCaseModel ccm = new CloseCaseModel();
+            var result = from requestwisefile in _context.Requestwisefiles
+                         join request in _context.Requests on requestwisefile.Requestid equals request.Requestid
+                         join physician in _context.Physicians on request.Physicianid equals physician.Physicianid into physicianGroup
+                         from phys in physicianGroup.DefaultIfEmpty()
+                         join admin in _context.Admins on requestwisefile.Adminid equals admin.Adminid into adminGroup
+                         from adm in adminGroup.DefaultIfEmpty()
+                         where request.Requestid == RequestID
+                         select new
+                         {
+                             uploader = requestwisefile.Physicianid != null ? phys.Firstname : (requestwisefile.Adminid != null ? adm.Firstname : request.Firstname),
+                             requestwisefile.Filename,
+                             requestwisefile.Createddate,
+                             requestwisefile.Requestwisefileid
+                         };
+            List<Documents> docs = new List<Documents>();
+            foreach (var item in result)
+            {
+                docs.Add(new Documents
+                {
+                    CreatedDate = item.Createddate,
+                    Uploader = item.uploader,
+                    filename = item.Filename,
+                    RequestwisefileId = item.Requestwisefileid
+                });
+            }
+            ccm.documents = docs;
+            Request req = _context.Requests.FirstOrDefault(e => e.Requestid == RequestID);
+            ccm.FirstName = req.Firstname;
+            ccm.LastName = req.Lastname;
+            ccm.RequestID = req.Requestid;
+
+            Requestclient requestclient = _context.Requestclients.FirstOrDefault(e => e.Requestid == RequestID);
+            ccm.RC_FirstName = requestclient.Firstname;
+            ccm.RC_LastName = requestclient.Lastname;
+            ccm.RC_DateOfBirth = new DateTime((int)requestclient.Intyear, DateTime.ParseExact(requestclient.Strmonth, "MMMM", new CultureInfo("en-US")).Month, (int)requestclient.Intdate);
+            ccm.RC_PhoneNumber = requestclient.Phonenumber;
+            ccm.RC_Email = requestclient.Email;
+            return ccm;
+        }
+        #endregion
+
+        #region EditCloseCase
+        public bool EditCloseCase(CloseCaseModel model)
+        {
+            try
+            {
+                Requestclient requestclient = _context.Requestclients.FirstOrDefault(e => e.Requestid == model.RequestID);
+                if(requestclient != null)
+                {
+                    requestclient.Phonenumber = model.RC_PhoneNumber;
+                    requestclient.Email = model.RC_Email;
+                    _context.Requestclients.Update(requestclient);
+                    _context.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool CloseCase(int RequestID)
+        {
+            try
+            {
+                var data = _context.Requests.FirstOrDefault(e => e.Requestid == RequestID);
+                if(data != null)
+                {
+                    data.Status = 9;
+                    data.Modifieddate = DateTime.Now;
+                    _context.Requests.Update(data);
+                    _context.SaveChanges();
+                    Requeststatuslog rsl = new Requeststatuslog
+                    {
+                        Requestid = RequestID,
+                        Status = 9,
+                        Createddate = DateTime.Now
+                    };
+                    _context.Requeststatuslogs.Add(rsl);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
+
 }

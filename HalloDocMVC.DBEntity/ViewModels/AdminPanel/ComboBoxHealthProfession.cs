@@ -8,7 +8,7 @@ namespace HalloDocMVC.DBEntity.ViewModels.AdminPanel
 {
     public class ComboBoxHealthProfession
     {
-        public int VendorID { get; set; }
+        public int VendorId { get; set; }
         public string? VendorName { get; set; }
     }
 }

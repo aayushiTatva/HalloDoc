@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\pce116\source\repos\aayushiTatva\HalloDoc\HalloDocMVC
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/AdminPanel/Actions/CloseCase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXENsb3NlQ2FzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/AdminPanel/Actions/Modals/_AssignCase.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfQXNzaWduQ2FzZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,12 +36,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfQ2xlYXJDYXNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/AdminPanel/Actions/Modals/_SendAgreement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfU2VuZEFncmVlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/AdminPanel/Actions/Modals/_TransferRequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXE1vZGFsc1xfVHJhbnNmZXJSZXF1ZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/AdminPanel/Actions/SendOrder.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXFNlbmRPcmRlci5jc2h0bWw=
+[C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/AdminPanel/Actions/SendOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYW5lbFxBY3Rpb25zXFNlbmRPcmRlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/AdminPanel/Actions/ViewCase.cshtml]
@@ -110,6 +118,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/SendAgreement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VuZEFncmVlbWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/SendAgreement/SendAgreementModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VuZEFncmVlbWVudFxTZW5kQWdyZWVtZW50TW9kYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pce116/source/repos/aayushiTatva/HalloDoc/HalloDocMVC/Views/Shared/Error.cshtml]

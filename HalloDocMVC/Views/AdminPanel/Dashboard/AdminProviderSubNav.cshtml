@@ -1,9 +1,8 @@
 ﻿﻿@{
     string path = Context.Request.Path;
 }
-
-<nav class="navbar px-5 navbar-expand-md bg-white shadow mb-2 border border-top d-none d-md-block">
-    <div class="collapse navbar-collapse my-2" id="navbar">
+<nav class="navbar px-5 navbar-expand-md bg-white shadow mb-1 border border-top d-none d-md-block">
+    <div class="collapse navbar-collapse " id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item me-3">
                 <a class="nav-link text-dark @(path.StartsWith("/AdminDashBoard") ? "activesbnav" : "")" aria-current="page" asp-controller="AdminDashBoard" asp-action="Index">Dashboard</a>

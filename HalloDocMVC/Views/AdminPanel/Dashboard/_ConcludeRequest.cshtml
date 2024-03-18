@@ -94,7 +94,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="ViewDocuments" class="dropdown-item" asp-route-id="@item.RequestId">
                                     <i class="fa-solid fa-file-arrow-up me-2"></i>
                                     View Uploads
                                 </a>
@@ -106,7 +106,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a asp-controller="Actions" asp-action="Orders" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-solid fa-file-circle-check me-1"></i>
                                     Orders
                                 </a>

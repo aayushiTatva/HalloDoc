@@ -26,65 +26,24 @@
 </head>
 <body class="bg-light">
     <header class="shadow">
-        <div class="d-flex justify-content-between bg-white rounded-0 border-bottom">
+        <div class="d-flex justify-content-between bg-white rounded-0 ">
             <div class="d-inline-flex">
                 <a class="text-decoration-none align-self-center" id="offCanvasIcon" data-bs-toggle="offcanvas" href="#offcanvasExample">
                     <i class="fa-solid fa-bars text-info border rounded border-info my-3 p-2"></i>
                 </a>
-                <img id="halloDocLogo" class="img-fluid img-responsive p-3" src="~/images/Patient site 1.png" />
+                <img id="halloDocLogo" class="img-fluid img-responsive mt-1 ms-1" src="~/images/Patient site 1.png" />
             </div>
             <div class="d-inline-flex align-items-center p-3">
                 <label class="d-none d-sm-block">Welcome <strong>@CV.UserName()</strong></label>
                 <a class="text-decoration-none">
                     <i class="d-block d-sm-none fa-solid fa-arrow-right-from-bracket text-info border rounded border-info mx-3 mx-xs-2 my-3 p-2"></i>
-                </a>
-                <a asp-controller="Home" asp-action="Logout"class="d-none d-sm-block btn border border-info text-info mx-3  mx-xs-2">Logout</a>
-                <a href=""><i class="fas fa-moon text-info border rounded border-info my-3 p-2"></i></a>
+                </a>@*
+                <a asp-controller="Home" asp-action="Logout"class=" btn d-none d-sm-block relogin mx-3  mx-xs-2">Logout</a>*@
+                <a class="btn relogin d-none d-sm-block mx-3 shadow-none bg-white " asp-controller="Home" asp-action="Logout">Logout</a>
+                <a class="btn relogin d-none d-sm-block  shadow-none bg-white " asp-controller="" asp-action=""><i class="fas fa-moon "></i></a>
+                @*<a href="" class="btn relogin"><i class="fas fa-moon "></i></a>*@
             </div>
         </div>
-        @*<div class="navbar px-3 navbar-expand-sm bg-white mb-3">
-            <div class="container-fluid">
-                <div class="d-flex">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link px- text-dark @(path.StartsWith("/") ? "activeNavItem" : "")" aria-current="page">
-                                <small>Dashboard</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                <small>Provider Location</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                <small>My Profile</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                <small>Providers</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                <small>Parteners</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                <small>Access</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 text-dark @(path.StartsWith("/abc") ? "activeNavItem" : "")">
-                                <small>Records</small>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
         <partial name="../AdminPanel/Dashboard/AdminProviderSubNav" />
         <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
@@ -118,7 +77,6 @@
             </div>
         </div>
     </header>
-
     <div class="mb-5 bg-light">
         @RenderBody()
     </div>

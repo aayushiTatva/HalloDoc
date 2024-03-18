@@ -5,6 +5,8 @@ using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Plugins;
+using System.Drawing;
 
 namespace HalloDocMVC.Controllers.AdminController
 {
@@ -193,6 +195,7 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("ViewDocuments", "Actions", new { id = Requestid });
         }
         #endregion
+
         #region DeleteFile
         public async Task<IActionResult>DeleteFile(int? id, int Requestid)
         {
@@ -207,6 +210,7 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("ViewDocuments", "Actions", new { id = Requestid });
         }
         #endregion
+
         #region DeleteAllFiles
         public async Task<IActionResult> DeleteAllFiles(string deleteids, int Requestid)
         {
@@ -221,9 +225,105 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("ViewDocuments", "Actions", new { id = Requestid });
         }
         #endregion
-        public IActionResult SendOrder()
+        #region SendOrder
+
+        public async Task<IActionResult> Orders(int id)
         {
-            return View("../AdminPanel/Actions/SendOrder");
+            List<ComboBoxHealthProfessionalType> hpt = await _IComboBox.ComboBoxHealthProfessionalType();
+            ViewBag.ProfessionType = hpt;
+            SendOrderModel data = new SendOrderModel
+            {
+                RequestID = id
+            };
+            return View("~/Views/AdminPanel/Actions/SendOrders.cshtml", data);
+        }
+
+        public Task<IActionResult> ProfessionByType(int HealthProfessionId)
+        {
+            var v = _IComboBox.ProfessionByType(HealthProfessionId);
+            return Task.FromResult<IActionResult>(Json(v));
+        }
+
+        public Task<IActionResult> SelectProfessionalById(int VendorId)
+        {
+            var v = _IActions.SelectProfessionalById(VendorId);
+            return Task.FromResult<IActionResult>(Json(v));
+        }
+        public IActionResult SendOrders(SendOrderModel som)
+        {
+            if (ModelState.IsValid)
+            {
+                bool data = _IActions.SendOrders(som);
+                if (data)
+                {
+                    _INotyfService.Success("Order Created  successfully...");
+                    //_INotyfService.Information("Mail is sended to Vendor successfully...");
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                else
+                {
+                    _INotyfService.Error("Order Not Created...");
+                    return View("~/Views/AdminPanel/Actions/SendOrders.cshtml", som);
+                }
+            }
+            else
+            {
+                return View("~/Views/AdminPanel/Actions/SendOrders.cshtml", som);
+            }
+        }
+        #endregion SendOrder
+
+        #region SendAgreement
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SendAgreementMail(int RequestId)
+        {
+            if(_IActions.SendAgreement(RequestId))
+            {
+                _INotyfService.Success("Mail sent successfully");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        #endregion
+        #region CloseCase
+        public async Task<IActionResult> CloseCase_CC(int Id)
+        {
+            CloseCaseModel ccm = _IActions.GetRequestForCloseCase(Id);
+            return View("~/Views/AdminPanel/Actions/CloseCase.cshtml", ccm);
+        }
+        #endregion
+        public IActionResult CloseCaseUnpaid(int Id)
+        {
+            bool ccu = _IActions.CloseCase(Id);
+            if(ccu)
+            {
+                _INotyfService.Success("Closed case");
+                _INotyfService.Information("You can see closed case in unpaid state");
+            }
+            else
+            {
+                _INotyfService.Error("Case not closed");
+            }
+            return RedirectToAction("Index", "Dashboard");
+        }
+        public IActionResult EditCloseCase(CloseCaseModel ccu)
+        {
+            bool result = _IActions.EditCloseCase(ccu);
+            if (result)
+            {
+                _INotyfService.Success("Case Edited Successfully");
+                return RedirectToAction("CloseCase_CC", new { ccu.RequestID });
+            }
+            else
+            {
+                _INotyfService.Error("Case Not Edited");
+                return RedirectToAction("CloseCase_CC", new { ccu.RequestID });
+
+            }
+        }
+        public IActionResult EncounterForm()
+        {
+            return View("~/Views/AdminPanel/Actions/EncounterForm.cshtml");
         }
     }
 }

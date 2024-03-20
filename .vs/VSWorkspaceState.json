@@ -4,15 +4,14 @@
     "\\HalloDocMVC",
     "\\HalloDocMVC.Repositeries",
     "\\HalloDocMVC.Repositeries\\Repository",
-    "\\HalloDocMVC.Repositeries\\Repository\\Interface",
-    "\\HalloDocMVC\\Controllers",
-    "\\HalloDocMVC\\Controllers\\AdminController",
     "\\HalloDocMVC\\Views",
     "\\HalloDocMVC\\Views\\AdminPanel",
     "\\HalloDocMVC\\Views\\AdminPanel\\Home",
+    "\\HalloDocMVC\\Views\\PatientPanel",
+    "\\HalloDocMVC\\Views\\PatientPanel\\CreateRequest",
     "\\HalloDocMVC\\wwwroot",
     "\\HalloDocMVC\\wwwroot\\js"
   ],
-  "SelectedNode": "\\HalloDocMVC.Repositeries\\Repository\\Actions.cs",
+  "SelectedNode": "\\HalloDocMVC.Repositeries\\Repository\\Login.cs",
   "PreviewInSolutionExplorer": false
 }

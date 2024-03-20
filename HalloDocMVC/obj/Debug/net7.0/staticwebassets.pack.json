@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\104\\Fig9. Admin dashboard in Unpaid state-20240318034727.jpg",
+      "PackagePath": "staticwebassets\\Upload\\104\\Fig9. Admin dashboard in Unpaid state-20240318034727.jpg"
+    },
+    {
       "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\105\\Fig67.Submit Information Some one else-20240312102617.jpg",
       "PackagePath": "staticwebassets\\Upload\\105\\Fig67.Submit Information Some one else-20240312102617.jpg"
     },
@@ -61,8 +65,20 @@
       "PackagePath": "staticwebassets\\Upload\\112\\Send Link Pop-up-20240318015945.png"
     },
     {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\93\\Fig67.Submit Information Some one else-20240318034550.jpg",
+      "PackagePath": "staticwebassets\\Upload\\93\\Fig67.Submit Information Some one else-20240318034550.jpg"
+    },
+    {
       "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\96\\My schedule-20240311041926.png",
       "PackagePath": "staticwebassets\\Upload\\96\\My schedule-20240311041926.png"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\Fig68. View Documents.jpg",
+      "PackagePath": "staticwebassets\\Upload\\Fig68. View Documents.jpg"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\Fig9. Admin dashboard in Unpaid state.jpg",
+      "PackagePath": "staticwebassets\\Upload\\Fig9. Admin dashboard in Unpaid state.jpg"
     },
     {
       "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\admin.css",
@@ -73,8 +89,32 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\styleLoginPage.css",
-      "PackagePath": "staticwebassets\\css\\styleLoginPage.css"
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\styleAdminLoginPage.css",
+      "PackagePath": "staticwebassets\\css\\styleAdminLoginPage.css"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\styleDarkMode.css",
+      "PackagePath": "staticwebassets\\css\\styleDarkMode.css"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\stylePatientCreateRequestPage.css",
+      "PackagePath": "staticwebassets\\css\\stylePatientCreateRequestPage.css"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\stylePatientDashboard.css",
+      "PackagePath": "staticwebassets\\css\\stylePatientDashboard.css"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\stylePatientLandingPage.css",
+      "PackagePath": "staticwebassets\\css\\stylePatientLandingPage.css"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\stylePatientLoginPage.css",
+      "PackagePath": "staticwebassets\\css\\stylePatientLoginPage.css"
+    },
+    {
+      "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\css\\stylePatientSubmitRequestPage.css",
+      "PackagePath": "staticwebassets\\css\\stylePatientSubmitRequestPage.css"
     },
     {
       "Id": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\favicon.ico",

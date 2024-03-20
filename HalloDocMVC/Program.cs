@@ -5,6 +5,8 @@ using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
 using HalloDocMVC.Repositories;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using HalloDocMVC.Repositories.Patient.Repository.Interface;
+using HalloDocMVC.Repositories.Patient.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
@@ -17,6 +19,9 @@ builder.Services.AddSession();
 builder.Services.AddScoped<IAdminDashboard, AdminDashboard>();
 builder.Services.AddScoped<IActions, Actions>();
 builder.Services.AddScoped<IComboBox, ComboBox>();
+builder.Services.AddScoped<ICreateRequest, CreateRequest>();
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<ILogin, Login>();
 builder.Services.AddNotyf(config => { config.DurationInSeconds = 3; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
 var app = builder.Build();
 

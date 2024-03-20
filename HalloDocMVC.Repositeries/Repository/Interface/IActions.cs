@@ -33,5 +33,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository.Interface
         public CloseCaseModel GetRequestForCloseCase(int RequestID);
         public bool EditCloseCase(CloseCaseModel model);
         public bool CloseCase(int RequestID);
+        public EncounterFormModel GetRequestForEncounterForm(int RequestID);
     }
 }

@@ -685,6 +685,23 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             }
         }
         #endregion
+
+        #region EncounterForm
+        public EncounterFormModel GetRequestForEncounterForm(int RequestID)
+        {
+            Request req = _context.Requests.FirstOrDefault(e => e.Requestid == RequestID);
+            Requestclient requestclient = _context.Requestclients.FirstOrDefault(e => e.Requestid == RequestID);
+            EncounterFormModel enfm = new EncounterFormModel();
+            enfm.RequestID = req.Requestid;
+            enfm.FirstName = requestclient.Firstname;
+            enfm.LastName = requestclient.Lastname;
+            enfm.DateOfBirth = new DateTime((int)requestclient.Intyear, DateTime.ParseExact(requestclient.Strmonth, "MMMM", new CultureInfo("en-US")).Month, (int)requestclient.Intdate);
+            enfm.PhoneNumber = requestclient.Phonenumber;
+            enfm.Email = requestclient.Email;
+            enfm.Location = requestclient.Street + "," + requestclient.City + "," + requestclient.State;
+            return enfm;
+        }
+        #endregion
     }
 
 }

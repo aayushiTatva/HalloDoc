@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HalloDocMVC.Controllers.AdminController
 {
-    [CheckAdminAccess]
+    [CheckProviderAccess("Admin")]
     public class DashboardController : Controller
     {
         #region Configuration

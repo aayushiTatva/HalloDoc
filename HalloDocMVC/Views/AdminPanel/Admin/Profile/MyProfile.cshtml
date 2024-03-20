@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
+}
+@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.EncounterFormModel
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6">
+            <h4><strong>My Profile</strong></h4>
+        </div>
+        <div class="col-6 ms-auto">
+            <a class="relogin ms-auto" asp-controller="Dashboard" asp-action="Index"><button class="relogin shadow-none bg-white">Back</button></a>
+        </div>
+    </div>
+    <div class="row min-vh-100">
+        <div class="card">
+            <div class="card-body border-0">
+                <form method="post" asp-controller="" asp-action="" asp-route-RequestID="">
+                    <input type="hidden" @*asp-for=""*@ />
+                    <div class="row">
+                        <div class="col form-floating  space">
+                            <input @*asp-for=""*@ type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
+                            <label class="ms-2" for="fname"> First Name</label>
+                        </div>
+                        <div class="col form-floating  space">
+                            <input@* asp-for="" *@type="text" class="form-control shadow-none " id="lname" placeholder="Last Name">
+                            <label class="ms-2" for="lname">Last Name</label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col form-floating">
+                            <input @*asp-for=""*@ type="text" class="form-control shadow-none" id="location" placeholder="Location">
+                            <label class="ms-2" for="location">Location</label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-6 form-floating  space">
+                            <input @*asp-for=""*@ type="date" class="form-control shadow-none" id="dob" placeholder="Date Of Birth">
+                            <label class="ms-2" for="dob">Date Of Birth</label>
+                        </div>
+                        <div class="col-6 form-floating  space">
+                            <input @*asp-for=""*@ type="date" class="form-control shadow-none" id="currentDate" placeholder="Date">
+                            <label class="ms-2" for="currentDate">Date</label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="d-flex justify-content-end">
+                            <input type="submit" class="bg-info border border-outline-info text-white rounded-2 submission text-white" @*onclick="model_case(@Model.RequestId)" *@value="Save Changes">
+                            <a @*asp-controller="actions" asp-action="ViewNotes"*@ class="btn text-white rounded-2 text-white ms-2" id="finalize">Finalize</a>
+                            <a asp-controller="dashboard" asp-action="Index" class="btn bg-white border border-info rounded-2 text-info ms-2">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -225,6 +225,7 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("ViewDocuments", "Actions", new { id = Requestid });
         }
         #endregion
+
         #region SendOrder
 
         public async Task<IActionResult> Orders(int id)
@@ -285,13 +286,13 @@ namespace HalloDocMVC.Controllers.AdminController
             return RedirectToAction("Index", "Dashboard");
         }
         #endregion
+
         #region CloseCase
         public async Task<IActionResult> CloseCase_CC(int Id)
         {
             CloseCaseModel ccm = _IActions.GetRequestForCloseCase(Id);
             return View("~/Views/AdminPanel/Actions/CloseCase.cshtml", ccm);
         }
-        #endregion
         public IActionResult CloseCaseUnpaid(int Id)
         {
             bool ccu = _IActions.CloseCase(Id);
@@ -321,9 +322,11 @@ namespace HalloDocMVC.Controllers.AdminController
 
             }
         }
-        public IActionResult EncounterForm()
+        #endregion
+        public async Task<IActionResult> EncounterForm(int Id)
         {
-            return View("~/Views/AdminPanel/Actions/EncounterForm.cshtml");
+            EncounterFormModel efm = _IActions.GetRequestForEncounterForm(Id);
+            return View("~/Views/AdminPanel/Actions/EncounterForm.cshtml", efm);
         }
     }
 }

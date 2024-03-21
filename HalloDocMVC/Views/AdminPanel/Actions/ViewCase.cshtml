@@ -1,12 +1,24 @@
 ﻿@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.ViewCaseModel
 @using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant
+@{
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
+}
 <partial name="../Actions/Modals/_AssignCase.cshtml" />
 <div class="container">
     <div class="" style="border: none;">
         <div class="row d-flex p-3" style="border: none;">
             <div class="col-6  d-flex">
-                <div><h2>New Request</h2></div>
-                <span class="rounded-3 bg-success text-white mx-3 p-1 mb-"><small>Patients</small></span>
+                <div class="d-inline-flex">
+                    <div>
+                        <h4 class="form-title fw-bold mt-2 mx-2">New Request</h4>
+                    </div>
+                    <div class="d-flex align-self-center">
+                        <span class="rounded-3 @Enum.GetName(typeof(RequestType), Model.RequestTypeId) mx-3 p-1 text-white">
+                            @Enum.GetName(typeof(RequestType), Model.RequestTypeId)
+                        </span>
+                    </div>
+                </div>
+               @* <span class="rounded-3 bg-success text-white mx-3 p-1 mb-"><small>Patients</small></span>*@
             </div>
             <div class="col-6 d-flex">
                 <a class="relogin ms-auto" asp-controller="Dashboard" asp-action="Index" asp-route-id="@Model.Status"><button class="relogin shadow-none bg-white">Back</button></a>

@@ -2491,6 +2491,7 @@
       },
       "HalloDocMVC.Repositories.Patient/1.0.0": {
         "dependencies": {
+          "AspNetCoreHero.ToastNotification": "1.1.0",
           "HalloDocMVC.DBEntity": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.16",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0"

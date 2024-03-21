@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "y6FbDTlmpt9s3OgL38bvIH5Nca3N4sZnjiEK/PwTuSMRT0NLwQjtK4FCUTiBl47KTIMXuZ/N7gaNLmQaCLhgIQ==",
+  "dgSpecHash": "GQViaG336YdCK2y1elEWrvDtaJQdHvlHFr0/BMivc99le2jYRXp8CiyyCXDLxjJwtuT28wKTdpw6aOF/sXxT7A==",
   "success": true,
   "projectFilePath": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC.Repositories.Patient\\HalloDocMVC.Repositories.Patient.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pce116\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\bouncycastle.cryptography\\2.3.0\\bouncycastle.cryptography.2.3.0.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\mailkit\\4.4.0\\mailkit.4.4.0.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.16\\microsoft.aspnetcore.authentication.jwtbearer.7.0.16.nupkg.sha512",
@@ -35,6 +36,7 @@
     "C:\\Users\\pce116\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\mimekit\\4.4.0\\mimekit.4.4.0.nupkg.sha512",
+    "C:\\Users\\pce116\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\pce116\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",

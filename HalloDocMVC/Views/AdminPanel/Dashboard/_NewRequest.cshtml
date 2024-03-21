@@ -240,7 +240,7 @@
                 @{
                     int i;
                     <form id="paginationform" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
-                          asp-action="_SearchResult" asp-controller="Dashboard" novalidate="novalidate" class="d-flex">
+                          asp-action="SearchResult" asp-controller="Dashboard" novalidate="novalidate" class="d-flex">
                         <input type="hidden" asp-for="RegionId" />
                         <input type="hidden" asp-for="RequestType" />
                         <input type="hidden" asp-for="SearchInput" />
@@ -283,7 +283,6 @@
         </div>
     </div>
 </nav>
-
 <script>
     function model_Case(id) {
         console.log(id);
@@ -297,7 +296,6 @@
     function pagination(i) {
         $.ajax({
             url: "@Url.Action("SearchResult", "Dashboard")",
-            console.log("Hello pagination");
             type: "GET",
             success: function (data) {
                 $("#SearchResult").html(data);
@@ -307,7 +305,6 @@
             }
         });
     }
-    console.log("Hello pagination");
     function setpagenumber(e) {
         if (e == 'previous') {
             var cp = @Model.CurrentPage-1;
@@ -321,8 +318,9 @@
             $('#currentpagevalue').val(e);
         }
         $("#paginationform").submit();
+
+        console.log("Hello pagination");
     }
-    console.log("Hello setpagenumber");
 </script>
 
 

@@ -31,7 +31,7 @@
         public int UnpaidRequest { get; set; }
         public int CurrentPage { get; set; } = 1;
         public int TotalPages { get; set; } = 1;
-        public int PageSize { get; set; } = 5;
+        public int PageSize { get; set; } = 3;
         public string? SearchInput { get; set; }
         public int? RegionId { get; set; }
         public int? RequestType { get; set; }

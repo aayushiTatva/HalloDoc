@@ -2,7 +2,7 @@
 @using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant
 
 @{
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
 }
 
 <div class="container mb-5">
@@ -12,12 +12,8 @@
                 <div>
                     <h4 class="form-title fw-bold mt-2 mx-2">Notes</h4>
                 </div>
-                <div>
-                    <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info shadow-none">
-                        <strong class="text-info">
-                            <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
-                        </strong>
-                    </a>
+                <div class="col-6 d-flex">
+                    <a class="relogin ms-auto" asp-controller="Dashboard" asp-action="Index" asp-route-id="@Model.Status"><button class="relogin shadow-none bg-white">Back</button></a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
         <div class="row mb-2" style="--bs-gutter-x: 0rem;">
             <div class="col-md-2 col-sm-4 col-4 ">
                 <button type="submit" name="Status" value="1" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded new ps-2 pt-3 thumbnail" id="new">
+                    <div class="p-1 rounded ps-2 pt-3 thumbnail @{if(CV.CurrentStatus()=="1"){@Html.Raw("activeTab")}}" id="new">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <i class="fa-solid fa-circle-plus mx-2 mt-1"></i>
@@ -25,7 +25,7 @@
 
             <div class="col-md-2 col-sm-4 col-4 position-relative">
                 <button type="submit" name="Status" value="2" class="btn text-start shadow-none w-100">
-                    <div class="p-1 rounded pending ps-2 pt-3 thumbnail" id="pending">
+                    <div class="p-1 rounded  ps-2 pt-3 thumbnail @{if(CV.CurrentStatus()=="2"){@Html.Raw("activeTab")}}" id="pending">
                         <div class="d-inline-flex fw-bold">
                             <div class="d-none d-md-block">
                                 <i class="fa-solid fa-user-clock mx-2 mt-1"></i>

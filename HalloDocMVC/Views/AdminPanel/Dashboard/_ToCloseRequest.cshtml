@@ -38,7 +38,15 @@
                 </tr>
             </thead>
             <tbody class="bg-white mb-5">
-                @foreach (var (item,index) in Model.list.Select((item,index) => (item,index)))
+            @if (Model.list.Count == 0)
+            {
+                <tr class="text-center border-bottom border-dark ">
+                    <td colspan="10">
+                        <strong class="fs-4 text-danger">No Data to show !!</strong>
+                    </td>
+                </tr>
+            }
+            @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
             {
                 <tr class="@Enum.GetName(typeof(RequestType), item.RequestTypeId) text-white border-bottom border-white">
                     <td><small>@item.PatientName</small></td>
@@ -130,7 +138,15 @@
     <!--Mobile Screen View of table-->
     <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
         <div class="dBlock">
-            @foreach (var item in Model.list)
+        @if (Model.list.Count == 0)
+        {
+            <tr class="text-center border-bottom border-dark ">
+                <td colspan="10">
+                    <strong class="fs-4 text-danger">No Data to show !!</strong>
+                </td>
+            </tr>
+        }
+        @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
         {
             <div class="accordion-item btn-i text-secondary">
                 <h2 class="accordion-header" id="flush-heading-@item.RequestId">
@@ -256,7 +272,7 @@
                 @{
                     int i;
                     <form id="paginationform" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
-                          asp-action="_SearchResult" asp-controller="Dashboard" novalidate="novalidate" class="d-flex">
+                          asp-action="SearchResult" asp-controller="Dashboard" novalidate="novalidate" class="d-flex">
                         <input type="hidden" asp-for="RegionId" />
                         <input type="hidden" asp-for="RequestType" />
                         <input type="hidden" asp-for="SearchInput" />

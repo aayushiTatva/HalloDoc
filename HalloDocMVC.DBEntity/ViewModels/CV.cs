@@ -115,6 +115,8 @@ namespace HalloDocMVC.DBEntity.ViewModels
             }
             return null;
         }
+
+        
         public static string? CurrentStatus()
         {
             string? Status = _httpContextAccessor.HttpContext.Request.Cookies["Status"];

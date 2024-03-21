@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sUj3hnh7zcyJzhLuTtIbwyxUlz0KKkjaCJbxXwWT9M4=",
+  "Hash": "tMeOtd2Dl1CUfmnDvYql+3thTY1SjdDdVM3AAJHQ28w=",
   "Source": "HalloDocMVC",
   "BasePath": "_content/HalloDocMVC",
   "Mode": "Default",
@@ -3619,6 +3619,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Upload\\112\\Send Link Pop-up-20240318015945.png"
+    },
+    {
+      "Identity": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\127\\Fig31.2 Create Role Patient UserAccess-20240321094212.png",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/127/Fig31.2 Create Role Patient UserAccess-20240321094212.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\127\\Fig31.2 Create Role Patient UserAccess-20240321094212.png"
+    },
+    {
+      "Identity": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\127\\Fig8. Admin dashboard in To Close state-20240321043416.jpg",
+      "SourceId": "HalloDocMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\",
+      "BasePath": "_content/HalloDocMVC",
+      "RelativePath": "Upload/127/Fig8. Admin dashboard in To Close state-20240321043416.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\127\\Fig8. Admin dashboard in To Close state-20240321043416.jpg"
     },
     {
       "Identity": "C:\\Users\\pce116\\source\\repos\\aayushiTatva\\HalloDoc\\HalloDocMVC\\wwwroot\\Upload\\93\\Fig67.Submit Information Some one else-20240318034550.jpg",

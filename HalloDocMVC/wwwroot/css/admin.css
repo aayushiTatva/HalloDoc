@@ -14,7 +14,7 @@
 .activeFilter {
     border: 2px solid #0dcaf0;
 }
-.new {
+#new {
     background-color: #55649D;
     border: 2px solid #E9EAEF;
     color: #E9EAEF;
@@ -22,7 +22,7 @@
     height: 100px;
 }
 
-.pending {
+#pending {
     background-color: #E5F2F8;
     border: 2px solid #41B8D5;
     color: #41B8D5;
@@ -30,7 +30,7 @@
     height: 100px;
 }
 
-.active {
+#actives {
     background-color: #E9F0E8;
     border: 2px solid #4E8150;
     color: #4E8150;
@@ -38,7 +38,7 @@
     height: 100px;
 }
 
-.conclude {
+#conclude {
     background-color: #F7E6EE;
     border: 2px solid #A64676;
     color: #A64676;
@@ -46,14 +46,14 @@
     height: 100px;
 }
 
-.toClose {
+#toclose {
     background-color: #E6EDF5;
     border: 2px solid #4A7DA5;
     color: #4A7DA5;
     height: 100px;
 }
 
-.unpaid {
+#unpaid {
     background-color: #EFEEF4;
     border: 2px solid #9D80BF;
     color: #9D80BF;

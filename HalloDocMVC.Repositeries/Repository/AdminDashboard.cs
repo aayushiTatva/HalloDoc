@@ -82,7 +82,6 @@ namespace HalloDocMVC.Repositories.Admin.Repository
                 list = list1,
                 CurrentPage = pagination.CurrentPage,
                 TotalPages = totalPages,
-                PageSize = 5,
                 SearchInput = pagination.SearchInput
             };
             return paginatedViewModel;

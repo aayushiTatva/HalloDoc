@@ -6,6 +6,7 @@
     Layout = "~/Views/Shared/Patient/_LayoutPatientDashboard.cshtml";
 }
 ﻿﻿@using HalloDocMVC.DBEntity.ViewModels;
+@using static HalloDocMVC.DBEntity.DataModels.Aspnetuser;
 <div class="container">
     <div class="row">
         <div class="row ">
@@ -23,7 +24,6 @@
                 <h5 style="color:aqua;">Patient Name</h5>
                 <div>
                     <strong class="text-info">@CV.UserName()</strong>
-                    <span>@CV.UserID()</span>
                 </div>
                 <div>
                     <p>Check here for any files that you or the doctors of your subsequents requestors have attached for you to review</p>
@@ -71,8 +71,8 @@
                                     <input class="form-check-input " type="checkbox" id="selectall" onchange="select_Desectall()">
                                 </div>
                             </th>
-                            <th scope="col" class="table-text-header px-3">Document Name</th>
-                            <th scope="col" class="table-text-header px-3">Uploader</th>
+                            <th scope="col" class="table-text-header px-3">Document Name</th>@*
+                            <th scope="col" class="table-text-header px-3">Uploader</th>*@
                             <th scope="col" class="table-text-header">Upload date</th>
                             <th scope="col" class="table-text-header">Action</th>
                         </tr>
@@ -87,7 +87,6 @@
                                     </div>
                                 </td>
                                 <td class="table-text px-3 text-secondary">@item2.Filename</td>
-                                <td class="table-text px-3 text-secondary">@*@item2.Firstname*@</td>
                                 <td class="table-text px-3 text-secondary">@item2.Createddate</td>
                                 <td class="table-text text-center">
                                     <a class="btn btn-sm download-link btn-outline-info document-button" download href="~/Upload/@item2.Filename">

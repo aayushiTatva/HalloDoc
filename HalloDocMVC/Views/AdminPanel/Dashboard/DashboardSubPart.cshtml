@@ -1,6 +1,9 @@
-﻿@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.CountStatusWiseRequestModel;
+﻿@using HalloDocMVC.DBEntity.ViewModels;
+@using HalloDocMVC.Models;
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant;
+@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.PaginationModel;
 <form id="filterForm" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#SearchResult"
-      asp-action="_SearchResult" asp-controller="Dashboard" novalidate="novalidate">
+      asp-action="SearchResult" asp-controller="Dashboard" novalidate="novalidate">
     <div class="mx-sm-1 mx-md-2 mx-xxl-4 mt-0 bg-light">
         <!--Status of requests-->
         <div class="row mb-2" style="--bs-gutter-x: 0rem;">
@@ -143,44 +146,55 @@
             </div>
         </div>
         <!--End Important links-->
-        <!--Searchbar-->
+        <!--Filters-->
         <div class="mt-2 mx-2 bg-white">
             <div class="searchBar px-2">
-                <div class="searchPatientRegion py-2">
-                    <div class="search m-1">
-                        <i class="fa fa-search"></i>
-                        <input type="text" class="form-control" placeholder="Search Patients">
+                <div class="py-2 row w-100" style="--bs-gutter-x:0rem;">
+                    <div class="search col-lg-3 col-sm-6 col-xs-12 mb-1">
+                        <div onclick="SearchSubmit()">
+                            <i class="fa fa-search"></i>
+                            <input asp-for="SearchInput" id="SearchInput" type="text" class="form-control" placeholder="Search Patients">
+                        </div>
                     </div>
-                    <div class="search m-1">
-                        <i class="fa fa-search"></i>
-                        <select class="form-select shadow-none" id="floatingSelectGrid">
-                            <option selected class="text-secondary">All Regions</option>
-                            <option value="1">Maryland</option>
-                            <option value="2">New York</option>
-                            <option value="3">Virginia</option>
-                        </select>
+                    <div class="search col-lg-3 col-sm-6 col-xs-12 mb-1">
+                        <div class="ms-1">
+                            <i class="fa fa-search"></i>
+                            <select asp-for="RegionId" asp-items="@(new SelectList(ViewBag.ComboBoxRegion, "RegionId", "RegionName"))" onchange="SearchSubmit()" class="form-select shadow-none text-secondary" id="floatingSelectGrid">
+                                <option class="text-secondary w-100">All Regions</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="requestType">
-                    <div class="me-3">
-                        <i class="fa-solid fa-circle fa-xs" style="color:#5fbc61;"></i>
-                        <small>Patient</small>
-                    </div>
-                    <div class="me-3">
-                        <i class="fa-solid fa-circle fa-xs" style="color:#ed9124;"></i>
-                        <small>Family / Friend</small>
-                    </div>
-                    <div class="me-3">
-                        <i class="fa-solid fa-circle fa-xs" style="color:#cd697b;"></i>
-                        <small>Business</small>
-                    </div>
-                    <div class="me-2">
-                        <i class="fa-solid fa-circle fa-xs" style="color:#0a7cb9;"></i>
-                        <small>Concierge</small>
+                    <div class="requestType col-lg-6 col-sm-12 d-flex justify-content-end">
+                        <div class="d-flex align-self-center t-filter">
+                            <button type="submit" name="filter" value="1,2,3,4" class="btn me-2 shadow-none activeFilter">
+                                <small>All</small>
+                            </button>
+                            <button type="submit" name="filter" value="2" class="btn me-2 shadow-none">
+                                <i class="fa-solid fa-circle fa-xs" style="color:#5fbc61;"></i>
+                                <small>Patient</small>
+                            </button>
+                            <button type="submit" name="filter" value="3" class="btn me-2 shadow-none">
+                                <i class="fa-solid fa-circle fa-xs" style="color:#ed9124;"></i>
+                                <small>Family / Friend</small>
+                            </button>
+                            <button type="submit" name="filter" value="1" class="btn me-2 shadow-none">
+                                <i class="fa-solid fa-circle fa-xs" style="color:#cd697b;"></i>
+                                <small>Business</small>
+                            </button>
+                            <button type="submit" name="filter" value="4" class="btn me-2 shadow-none">
+                                <i class="fa-solid fa-circle fa-xs" style="color:#0a7cb9;"></i>
+                                <small>Concierge</small>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--End Searchbar-->
+        <!--End Filters-->
     </div>
 </form>
+<script>
+    function SearchSubmit() {
+        $('#filterForm').submit();
+    }
+</script>

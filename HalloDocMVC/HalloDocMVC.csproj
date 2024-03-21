@@ -32,9 +32,4 @@
     <ProjectReference Include="..\HalloDocMVC.Repositories.Patient\HalloDocMVC.Repositories.Patient.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\PatientPanel\Dashboard\" />
-    <Folder Include="Views\PatientPanel\Profile\" />
-  </ItemGroup>
-
 </Project>

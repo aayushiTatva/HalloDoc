@@ -101,6 +101,8 @@ namespace HalloDocMVC.Repositories.Admin.Repository
             return data;
         }
         #endregion ProfessionByType
+
+         
     }
 }
 

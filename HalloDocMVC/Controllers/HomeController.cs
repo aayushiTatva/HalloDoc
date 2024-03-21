@@ -8,13 +8,22 @@ namespace HalloDocMVC.Controllers
 {
     public class HomeController : Controller
     {
-        /*public IActionResult Index()
-        {
-            return View("../AdminPanel/Home/Login");
-        }*/
         public IActionResult Index()
         {
+            return View("../AdminPanel/Home/Login");
+        }
+        /*public IActionResult Index()
+        {
             return View("../PatientPanel/Home/Index");
+        }*/
+
+        public IActionResult Profile()
+        {
+            return View("~/Views/AdminPanel/Admin/Profile/Index.cshtml");
+        }
+        public IActionResult ProfileK()
+        {
+            return View("~/Views/AdminPanel/Admin/Profile/Index1.cshtml");
         }
         /*[HttpPost]
         [ValidateAntiForgeryToken]

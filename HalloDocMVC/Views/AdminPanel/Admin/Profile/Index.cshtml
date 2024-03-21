@@ -1,0 +1,221 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
+}
+@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.AdminProfile
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant
+@*@{
+    var enumData = from AdminStatus e in Enum.GetValues(typeof(AdminStatus))
+                   select new
+                   {
+                       ID = (int)e,
+                       Name = e.ToString()
+                   };
+}*@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6">
+            <h4><strong>My Profile</strong></h4>
+        </div>
+        <div class="col-6 ms-auto">
+            <a class="relogin ms-auto" asp-controller="Dashboard" asp-action="Index"><button class="relogin shadow-none bg-white">Back</button></a>
+        </div>
+    </div>
+    <div class="row min-vh-100">
+        <div class="card shadow border-0 mb-3">
+            <form method="post" asp-controller="" asp-action="">
+                <div class="card-body border-0">
+                    <div class="row ">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="UserName" type="text" class="form-control shadow-none" id="uname" placeholder="UserName">
+                            <label class="ms-2" for="uname"> UserName</label>
+                            <span @*asp-validation-for="FirstName"*@ class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="Password" type="password" class="form-control shadow-none" id="passwd" placeholder="Password">
+                            <label class="ms-2" for="passwd">Password</label>
+                            <span @*asp-validation-for="LastName"*@ class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <select class="form-select shadow-none" required asp-for="Status" id="floatingSelectGrid" style="height: 60px" placeholder="Status" data-allow-clear="true" tabindex="-1"  data-control="select2" data-placeholder="Select Level" disabled>
+                                <option selected class="text-secondary">Status</option>
+                                <option value="1">Active</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <select class="form-select shadow-none" required @*asp-for=""*@ id="floatingSelectGrid" style="height: 60px" placeholder="Role" data-allow-clear="true" tabindex="-1" asp-items="@(new SelectList(ViewBag.userrolecombobox, "RoleId", "RoleName"))" data-control="select2" data-placeholder="Select Level" disabled>
+                                <option selected class="text-secondary">Role</option>
+                                <option value="1">Master Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 ms-auto">
+                            <a class="relogin ms-auto" asp-controller="Dashboard" asp-action="Index"><button class="relogin shadow-none bg-white">Reset Password</button></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card shadow border-0 mb-3">
+            <div class="card-header">
+                <h4><strong>Administrator Information</strong></h4>
+            </div>
+            <form method="post" asp-controller="" asp-action="">
+                <div class="card-body border-0">
+                    <div class="row ">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none input" id="fname" placeholder="details">
+                            <label class="ms-2" for="fname"> First Name</label>
+                            <span @*asp-validation-for="FirstName"*@ class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none input" id="lname" placeholder="details">
+                            <label class="ms-2" for="lname">Last Name</label>
+                            <span @*asp-validation-for="LastName"*@ class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="Email" type="emil" class="form-control shadow-none input" id="email" placeholder="Email">
+                            <label class="ms-2" for="email">Email</label>
+                            <span @*asp-validation-for="FirstName"*@ class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="ConfirmEmail" type="email" class="form-control shadow-none input" id="cemail" placeholder="Confirm Email">
+                            <label class="ms-2" for="cemail">Confirm Email</label>
+                            <span @*asp-validation-for="FirstName"*@ class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="PhoneNumber" class="form-control shadow-none input" type="tel" id="phones" placeholder="Phone Number" />
+                            <label class="ms-2" for="tel">Phone Number</label>
+                            <span @*asp-validation-for="PhoneNumber"*@ class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-check d-inline-flex ms-3">
+                                <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" checked>
+                                <label class="form-check-label ms-3" for="check1"> District Of Columbia </label>
+                            </div>
+                            <div class="form-check d-inline-flex ms-3">
+                                <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something" checked>
+                                <label class="form-check-label ms-3" for="check2"> New York</label>
+                            </div>
+                            <div class="form-check d-inline-flex ms-3">
+                                <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something" checked>
+                                <label class="form-check-label ms-3" for="check2"> Virginia</label>
+                            </div>
+                            <div class="form-check d-inline-flex ms-3">
+                                <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something" checked>
+                                <label class="form-check-label ms-3" for="check2"> Maryland</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 mt-1">
+                            <a id="editings" onclick=" toggleFormElements('true')" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded ">Edit</a>
+                            <input type="submit" value="Save" id="savings" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card shadow border-0 mb-3">
+            <div class="card-header">
+                <h4><strong>Mailing and Biling Information</strong></h4>
+            </div>
+            <form method="post" asp-controller="" asp-action="">
+                <div class="card-body border-0">
+                    <div class="row ">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="FirstName"*@ type="text" class="form-control shadow-none inputs" id="address1" placeholder="Adress 1">
+                            <label class="ms-2" for="address1"> Address 1</label>
+                            <span @*asp-validation-for="FirstName"*@ class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="LastName"*@ type="text" class="form-control shadow-none inputs" id="address2" placeholder="Address 2">
+                            <label class="ms-2" for="address2">Address 2</label>
+                            <span @*asp-validation-for="LastName"*@ class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="FirstName"*@ type="text" class="form-control shadow-none inputs" id="city" placeholder="City">
+                            <label class="ms-2" for="city">City</label>
+                            <span @*asp-validation-for="FirstName"*@ class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <select class="form-select shadow-none" id="floatingSelectGrid" style="height: 60px" placeholder="State">
+                                <option selected class="text-secondary">State</option>
+                                <option value="1">Virginia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="FirstName"*@ type="text" class="form-control shadow-none inputs" id="zipcode" placeholder="Zipcode">
+                            <label class="ms-2" for="zipcode">Zipcode</label>
+                            <span @*asp-validation-for="FirstName"*@ class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input asp-for="PhoneNumber" class="form-control shadow-none inputs" type="tel" id="phones" placeholder="Phone Number" />
+                            <label class="ms-2" for="tel">Phone Number</label>
+                            <span @*asp-validation-for="PhoneNumber"*@ class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 mt-1">
+                            <a id="editing" onclick=" mytoggleFormElements('true')" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded ">Edit</a>
+                            <input type="submit" value="Save" id="saving" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    
+    window.onload = function (e) {
+        toggleFormElements('true')
+        mytoggleFormElements('true')
+    }
+    function toggleFormElements(bDisabled) {
+        var inputs = document.getElementsByClassName("input");
+        var submit = document.getElementById("savings");
+        var editprofile = document.getElementById("editings");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = !inputs[i].disabled;
+        }
+        if (inputs[0].disabled) {
+            submit.style.display = "none";
+            editprofile.style.display = "block";
+        } else {
+            submit.style.display = "block";
+            editprofile.style.display = "none";
+        }
+        console.log("Hello Admin");
+    }
+
+    function mytoggleFormElements(bDisabled) {
+        var inputs = document.getElementsByClassName("inputs");
+        var submit = document.getElementById("saving");
+        var editprofile = document.getElementById("editing");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = !inputs[i].disabled;
+        }
+        if (inputs[0].disabled) {
+            submit.style.display = "none";
+            editprofile.style.display = "block";
+        } else {
+            submit.style.display = "block";
+            editprofile.style.display = "none";
+        }
+        console.log("Hello Mail");
+    }
+</script>

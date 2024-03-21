@@ -2,16 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\HalloDocMVC",
-    "\\HalloDocMVC.Repositeries",
-    "\\HalloDocMVC.Repositeries\\Repository",
     "\\HalloDocMVC\\Views",
     "\\HalloDocMVC\\Views\\AdminPanel",
     "\\HalloDocMVC\\Views\\AdminPanel\\Home",
     "\\HalloDocMVC\\Views\\PatientPanel",
     "\\HalloDocMVC\\Views\\PatientPanel\\CreateRequest",
+    "\\HalloDocMVC\\Views\\Shared",
+    "\\HalloDocMVC\\Views\\Shared\\Patient",
     "\\HalloDocMVC\\wwwroot",
     "\\HalloDocMVC\\wwwroot\\js"
   ],
-  "SelectedNode": "\\HalloDocMVC.Repositeries\\Repository\\Login.cs",
+  "SelectedNode": "\\HalloDocMVC\\Views\\Shared\\Patient\\_LayoutPatientDashboard.cshtml",
   "PreviewInSolutionExplorer": false
 }

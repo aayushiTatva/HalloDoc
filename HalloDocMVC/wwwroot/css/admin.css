@@ -11,7 +11,9 @@
     color: #0DCAF0 !important;
     font-weight: 600;
 }
-
+.activeFilter {
+    border: 2px solid #0dcaf0;
+}
 .new {
     background-color: #55649D;
     border: 2px solid #E9EAEF;

@@ -1,12 +1,13 @@
 ﻿using HalloDocMVC.DBEntity.DataContext;
+using HalloDocMVC.DBEntity.ViewModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
+using HalloDocMVC.Models;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HalloDocMVC.Controllers.AdminController
 {
-    [CheckProviderAccess("Admin")]
     public class DashboardController : Controller
     {
         #region Configuration
@@ -14,15 +15,14 @@ namespace HalloDocMVC.Controllers.AdminController
         private readonly IAdminDashboard _IAdminDashboard;
         private readonly IComboBox _IComboBox;
         private readonly ILogger<DashboardController> _Logger;
-        public DashboardController(HalloDocContext context, IAdminDashboard IAdminDashboard, IAdminDashboard iAdminDashboard, IComboBox iComboBox)
+        public DashboardController(HalloDocContext context,IAdminDashboard iAdminDashboard, IComboBox iComboBox)
         {
             _context = context;
-            _IAdminDashboard = IAdminDashboard;
             _IAdminDashboard = iAdminDashboard;
             _IComboBox = iComboBox;
         }
         #endregion Configuration
-
+        [CheckProviderAccess("Admin")]
         #region Index
         public async Task<IActionResult> Index()
         {
@@ -36,35 +36,15 @@ namespace HalloDocMVC.Controllers.AdminController
         #region _SearchResult
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> _SearchResult(string Status)
+        public async Task<IActionResult> SearchResult(string Status, string Filter, PaginationModel pagination)
         {
-            if (Status == null)
-            {
-                Status = "1";
-            }
+            Status ??= CV.CurrentStatus();
+            Filter ??= CV.Filter();
+            Response.Cookies.Append("Status", Status);
+            Response.Cookies.Append("Filter", Filter);
 
-            List<AdminDashboardList> contacts = _IAdminDashboard.GetRequests(Status);
-            switch (Status)
-            {
-                case "1":
-                    TempData["CurrentStatus"] = "New";
-                    break;
-                case "2":
-                    TempData["CurrentStatus"] = "Pending";
-                    break;
-                case "4,5":
-                    TempData["CurrentStatus"] = "Active";
-                    break;
-                case "6":
-                    TempData["CurrentStatus"] = "Conclude";
-                    break;
-                case "3,7,8":
-                    TempData["CurrentStatus"] = "To Close";
-                    break;
-                case "9":
-                    TempData["CurrentStatus"] = "Unpaid";
-                    break;
-            }
+            PaginationModel contacts = _IAdminDashboard.GetRequests(Status, Filter, pagination);
+
             switch (Status)
             {
                 case "1":
@@ -86,7 +66,6 @@ namespace HalloDocMVC.Controllers.AdminController
                     return PartialView("~/Views/AdminPanel/Dashboard/_UnpaidRequest.cshtml", contacts);
                     break;
             }
-
 
             return PartialView("");
         }

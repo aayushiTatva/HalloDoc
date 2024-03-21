@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿/*using System.IdentityModel.Tokens.Jwt;
 
 namespace HalloDocMVC.Models
 {
@@ -109,5 +109,17 @@ namespace HalloDocMVC.Models
             var UserID = tokenS.Claims.First(claim => claim.Type == "UserId").Value;
             return UserID;
         }
+        public static string? CurrentStatus()
+        {
+            string? Status = _httpContextAccessor.HttpContext.Request.Cookies["Status"];
+            return Status;
+        }
+
+        public static string? Filter()
+        {
+            string? Filter = _httpContextAccessor.HttpContext.Request.Cookies["Filter"];
+            return Filter;
+        }
     }
-}
+}*/
+/*GITHUB FILE*/

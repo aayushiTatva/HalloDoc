@@ -22,6 +22,8 @@ builder.Services.AddScoped<IComboBox, ComboBox>();
 builder.Services.AddScoped<ICreateRequest, CreateRequest>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<ILogin, Login>();
+builder.Services.AddScoped<IPatientDashboard, PatientDashboard>();
+builder.Services.AddScoped<IPatientProfile, PatientProfile>();
 builder.Services.AddNotyf(config => { config.DurationInSeconds = 3; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
 var app = builder.Build();
 

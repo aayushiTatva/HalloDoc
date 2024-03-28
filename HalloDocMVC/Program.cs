@@ -25,6 +25,7 @@ builder.Services.AddScoped<ILogin, Login>();
 builder.Services.AddScoped<IPatientDashboard, PatientDashboard>();
 builder.Services.AddScoped<IPatientProfile, PatientProfile>();
 builder.Services.AddScoped<IMyProfile, MyProfile>();
+builder.Services.AddScoped<IContactYourProvider, ContactYourProvider>();
 builder.Services.AddNotyf(config => { config.DurationInSeconds = 3; config.IsDismissable = true; config.Position = NotyfPosition.TopRight; });
 var app = builder.Build();
 

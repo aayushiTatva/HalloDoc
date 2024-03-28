@@ -45,7 +45,7 @@ namespace HalloDocMVC.Repositories.Patient.Repository
         public ViewDataPatientRequestModel RequestForMe()
         {
             var patientRequest = _context.Users
-                               .Where(r => r.Userid == CV.UserID())
+                                .Where(r => r.Userid == Convert.ToInt32(CV.UserID()))
                                .Select(r => new ViewDataPatientRequestModel
                                {
                                    FirstName = r.Firstname,
@@ -111,7 +111,7 @@ namespace HalloDocMVC.Repositories.Patient.Repository
         {
             var Request = new DBEntity.DataModels.Request();
             var Requestclient = new Requestclient();
-            var isexist = _context.Users.FirstOrDefault(x => x.Userid == CV.UserID());
+            var isexist = _context.Users.FirstOrDefault(x => x.Userid == Convert.ToInt32(CV.UserID()));
             Request.Requesttypeid = 2;
             //Request.Userid = isexist.Userid;
             Request.Firstname = isexist.Firstname;

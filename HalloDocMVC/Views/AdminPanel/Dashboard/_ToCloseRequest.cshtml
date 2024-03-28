@@ -121,7 +121,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a asp-controller="Actions" asp-action="EncounterForm" class="dropdown-item" asp-route-id="@item.RequestId">
+                                <a asp-controller="Actions" asp-action="Encounter" class="dropdown-item" asp-route-id="@item.RequestId">
                                     <i class="fa-solid fa-receipt me-2"></i>
                                     Encounter
                                 </a>
@@ -347,6 +347,6 @@
     <script>
         function modal_Case(id){
             var modaldata = @Html.Raw(Json.Serialize(Model))
-            document.getElementById('RequestID_Input_ModelClearCase').value = modaldata[id].requestId;
+            document.getElementById('RequestID_Input_ModelClearCase').value = modaldata.list[id].requestId;
     }
     </script>

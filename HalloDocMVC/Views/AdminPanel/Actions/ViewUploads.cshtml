@@ -1,7 +1,7 @@
 ﻿@model HalloDocMVC.DBEntity.ViewModels.AdminPanel.ViewUploadModel
 
 @{
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
     var status = "null";
     if (TempData["Status"] == null)
     {
@@ -22,7 +22,7 @@
                 </strong>
             </div>
             <div>
-                <a asp-controller="Dashboard" asp-action="Index"class=" btn d-none d-sm-block relogin mx-3  mx-xs-2">< Back</a>
+                <a class="relogin ms-auto" asp-controller="Dashboard" asp-action="Index"><button class="relogin shadow-none bg-white">Back</button></a>
             </div>
         </div>
         <div class="shadow bg-white rounded m-2 p-3">

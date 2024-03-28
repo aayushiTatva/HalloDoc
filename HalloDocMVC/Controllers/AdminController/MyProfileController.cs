@@ -30,7 +30,7 @@ namespace HalloDocMVC.Controllers.AdminController
         #region Index
         public async Task<IActionResult> Index()
         {
-            AdminProfileModel data = await _IMyProfile.GetProfile((int)CV.UserID());
+            AdminProfileModel data = await _IMyProfile.GetProfile(Convert.ToInt32(CV.UserID()));
             ViewBag.RegionComboBox = await _IComboBox.ComboBoxRegions();
             ViewBag.ComboBoxUserRole = await _IComboBox.ComboBoxUserRole();
             return View("~/Views/AdminPanel/Admin/Profile/Index.cshtml", data);

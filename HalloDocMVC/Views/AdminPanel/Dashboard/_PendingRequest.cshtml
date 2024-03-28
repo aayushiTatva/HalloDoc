@@ -111,7 +111,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a asp-controller="Actions" asp-action="ViewUpload" asp-route-id="@item.RequestId" class="dropdown-item">
+                                <a asp-controller="Actions" asp-action="ViewDocuments" asp-route-id="@item.RequestId" class="dropdown-item">
                                     <i class="fa-solid fa-file-arrow-up me-2"></i>
                                     View Uploads
                                 </a>
@@ -234,9 +234,9 @@
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button asp-controller="Actions" asp-action="ViewUpload" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="ViewDocuments" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>View Uploads</small>
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6 mb-3">
                                 <button onclick="modal_Case(@index)" data-bs-toggle="modal" data-bs-target="#ClearCase" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #ee9125;">
@@ -244,7 +244,7 @@
                                 </button>
                             </div>
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <button onclick="modal_Case(@index)"  data-bs-toggle="modal" data-bs-target="#SendAgreement" class="btn btn-white text-white rounded-pill 2px w-100 " style="background-color: #228b22;">
                                     <small>Email</small>
                                 </button>
                             </div>
@@ -321,7 +321,7 @@
     function modal_Case(id) {
         var modeldata = @Html.Raw(Json.Serialize(Model))
             document.getElementById('RequestID_Input_ModalTransferPhysician').value = modeldata.list[id].requestId;
-        document.getElementById('RequestID_Input_ModalClearCase').value = modeldata.list[id].requestId;
+        document.getElementById('RequestID_Input_ModelClearCase').value = modeldata.list[id].requestId;
         document.getElementById("RequestId_SendAgreement").value = modeldata.list[id].requestId;
         document.getElementById("PhoneNumber_SendAgreement").value = modeldata.list[id].patientPhoneNumber;
         document.getElementById("Email_SendAgreement").value = modeldata.list[id].email;

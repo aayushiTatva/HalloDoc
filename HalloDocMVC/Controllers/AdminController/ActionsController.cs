@@ -1,6 +1,7 @@
 ﻿using AspNetCore;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using AspNetCoreHero.ToastNotification.Notyf;
+using HalloDocMVC.DBEntity.ViewModels;
 using HalloDocMVC.DBEntity.ViewModels.AdminPanel;
 using HalloDocMVC.Repositories.Admin.Repository;
 using HalloDocMVC.Repositories.Admin.Repository.Interface;
@@ -323,10 +324,28 @@ namespace HalloDocMVC.Controllers.AdminController
             }
         }
         #endregion
-        public async Task<IActionResult> EncounterForm(int Id)
+
+        #region GetEncounterData
+        public IActionResult Encounter(int id)
         {
-            EncounterFormModel efm = _IActions.GetRequestForEncounterForm(Id);
+            EncounterModel efm = _IActions.GetEncounterData(id);
             return View("~/Views/AdminPanel/Actions/EncounterForm.cshtml", efm);
         }
+        #endregion
+
+        #region EditEncounterData
+        public IActionResult EditEncounterData(EncounterModel model)
+        {
+            if (_IActions.EditEncounterData(model, CV.ID()))
+            {
+                _INotyfService.Success("Encounter Changes Saved.");
+            }
+            else
+            {
+                _INotyfService.Error("Encounter data remains unchanged.");
+            }
+            return RedirectToAction("Encounter", new { id = model.RequesId });
+        }
+        #endregion
     }
 }

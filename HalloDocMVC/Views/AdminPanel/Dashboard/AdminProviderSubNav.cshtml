@@ -20,10 +20,15 @@
                         <small>My Profile</small>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a asp-controller="Providers" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Providers") ? "activeNavItem" : "")">
+                <li class="nav-item dropdown navDropdown">
+                    <a class="nav-link  px-3 text-dark @(path.StartsWith("/Providers") ? "activeNavItem" : "")" data-bs-toggle="dropdown">
                         <small>Providers</small>
                     </a>
+                    <div class="dropdown-menu">
+                        <a asp-controller="Providers" asp-action="Index" class="dropdown-item" >Provider</a>
+                        <a asp-controller="Providers" asp-action="Index1" class="dropdown-item">Scheduling</a>
+                        <a asp-controller="" asp-action="" class="dropdown-item">Invoicing</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a asp-controller="Parteners" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Parteners") ? "activeNavItem" : "")">
@@ -31,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a asp-controller="Access" asp-action="Index" class="nav-link px-3 text-dark @(path.StartsWith("/Access") ? "activeNavItem" : "")">
+                    <a asp-controller="Access" asp-action="Index1" class="nav-link px-3 text-dark @(path.StartsWith("/Access") ? "activeNavItem" : "")">
                         <small>Access</small>
                     </a>
                 </li>
@@ -44,3 +49,19 @@
         </div>
     </div>
 </div>
+<script>
+    $(function () {
+
+        // Dropdown toggle
+        $('.dropdown-toggle').click(function () {
+            $(this).next('.dropdown').toggle();
+        });
+
+        $(document).click(function (e) {
+            var target = e.target;
+            if (!$(target).is('.dropdown-toggle') && !$(target).parents().is('.dropdown-toggle')) {
+                $('.dropdown').hide();
+            }
+        });
+    });
+</script>

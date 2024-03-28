@@ -125,7 +125,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a asp-controller="Actions" asp-action="EncounterForm" class="dropdown-item" asp-route-id="@item.RequestId">
+                                <a asp-controller="Actions" asp-action="Encounter" class="dropdown-item" asp-route-id="@item.RequestId">
                                     <i class="fa-solid fa-receipt me-2"></i>
                                     Encounter
                                 </a>
@@ -142,7 +142,7 @@
     <!--Mobile Screen View of table-->
     <div class="accordion mt-3 d-block d-sm-none" id="accordionExample">
         <div class="dBlock">
-            @foreach (var item in Model.list)
+        @foreach (var (item, index) in Model.list.Select((item, index) => (item, index)))
         {
             <div class="accordion-item btn-i text-secondary">
                 <h2 class="accordion-header" id="flush-heading-@item.RequestId">
@@ -196,9 +196,9 @@
                         </p>
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
+                                <a asp-controller="Actions" asp-action="ViewNotes" asp-route-id="@item.RequestId" class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #228b22;">
                                     <small>View Notes</small>
-                                </button>
+                                </a>
                             </div>
                             <div class="col-6 mb-3">
                                 <button class="btn btn-white text-white rounded-pill 2px w-100" style="background-color: #145545;">

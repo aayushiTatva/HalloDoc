@@ -1,0 +1,131 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
+}
+@model List<HalloDocMVC.DBEntity.ViewModels.AdminPanel.ProviderModel>
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant
+
+<partial name="~/Views/AdminPanel/Actions/Modals/_ContactYourProvider.cshtml" />
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6">
+            <h4><strong>Provider Information</strong></h4>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="card shadow">
+            <div class="card-body border-0">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="search col-lg-3 col-sm-6 col-xs-12 mb-1">
+                            <div class="ms-1">
+                                <i class="fa fa-search"></i>
+                                <select class="form-select" data-allow-clear="true" tabindex="-1" id="regiondropdown" onchange="getdatabyregion()" asp-items="@(new SelectList(ViewBag.RegionComboBox,"RegionId","RegionName"))" data-control="select2" data-placeholder="Select Level">
+                                    <option class="text-secondary w-100 ">All </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 ms-auto d-flex">
+                        <div class="col-md-3">
+                            <form method="post" asp-controller="Providers" asp-action="ChangeNotification" id="saveChangesForm" >
+                            <input type="hidden" id="changeValue" name="changedValues"/>
+                                <a class="relogin ms-auto"><button class="contactprovider shadow-none bg-white ms-auto" style="display:none;" id="saveChangesButton">Save Changes</button></a>
+                            </form>
+                        </div>
+                        <a class="ms-auto pt-3" asp-controller="Providers" asp-action="PhysicianProfile"><button class="provideracc shadow-none ">Create Provider Account</button></a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-responsive mt-3 mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Stop Notifications</th>
+                                <th scope="col">Provider Name</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">On Call Status</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider" id="providerbody">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td scope="row">
+                                        @{
+                                            var check = false;
+                                            if (item.Notification != null)
+                                            {
+                                                check = item.Notification[0];
+                                            }
+                                            <input class=" form-check-inputs" id="@item.PhysicianId" type="checkbox" value="" @(check ? "checked" : "")>
+                                        }
+
+                                        <input class="NotificationId" type="hidden" value="@item.PhysicianId">
+                                    </td>
+                                    <td>@item.FirstName  @item.LastName</td>
+                                    <td>@item.RoleName</td>
+                                    <td>@item.Isnondisclosuredoc</td>
+                                    <td>@Enum.GetName(typeof(AdminStatus), item.Status)</td>
+                                    <td>
+                                        <button data-bs-toggle="modal" data-bs-target="#ContactYourProvider" data-bs-id="@item.PhysicianId" data-bs-email="@item.Email" class="contactprovider shadow-none document-button mx-1 mb-2">
+                                            Contact
+                                        </button>
+                                        <a asp-action="PhysicianProfile" asp-controller="Physician" asp-route-id="@item.PhysicianId" class="contactprovider shadow-none document-button mx-1 mb-2"><button class="contactprovider">
+                                                Edit
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function getdatabyregion() {
+        var region = $("#regiondropdown").val();
+        $.ajax({
+            method: "POST",
+            url: "@Url.Action("Index", "Providers")?region=" + region,
+            cache: false,
+            success: function (response) {
+                var data = $(response).find('tbody').html();
+                $('#providerbody').html(data);
+            },
+            error: function () {
+                alert("Error while Loading data.");
+            }
+        });
+    }
+    $(document).ready(function () {
+        $('#saveChangesButton').click(function () {
+            $('#saveChangesForm').submit();
+        });
+        var initialState = {};
+        $('.form-check-inputs').each(function () {
+            initialState[this.id] = this.checked;
+        });
+        $('.form-check-inputs').change(function () {
+            var changedValues = {};
+            $('.form-check-inputs').each(function () {
+                if (this.checked !== initialState[this.id]) {
+                    changedValues[this.id] = this.checked;
+                }
+            });
+            $('#changeValue').val(JSON.stringify(changedValues));
+            console.log(changedValues);
+            if (Object.keys(changedValues).length > 0) {
+                $('#saveChangesButton').show();
+            } else {
+                $('#saveChangesButton').hide();
+            }
+        });
+    });
+</script>

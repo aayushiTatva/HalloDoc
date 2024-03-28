@@ -4,7 +4,7 @@
         let activestemp = false;
         let concludetemp = false;
         let toclosetemp = false;
-        let unpaIdtemp = false;
+        let unpaidtemp = false;
 
         $('#new').on('click', function () {
             newtemp = true;
@@ -12,7 +12,7 @@
             activestemp = false;
             concludetemp = false;
             toclosetemp = false;
-            unpaIdtemp = false;
+            unpaidtemp = false;
             var element1 = document.getElementById("new");
             element1.style.backgroundColor = '#55649D';
             element1.style.color = '#E9EAEF';
@@ -33,7 +33,7 @@
             element5.style.backgroundColor = ' #E6EDF5';
             element5.style.color = '#4A7DA5';
             element5.style.borderColor = '#4A7DA5';
-            var element6 = document.getElementById("unpaId");
+            var element6 = document.getElementById("unpaid");
             element6.style.backgroundColor = '#EFEEF4';
             element6.style.color = '#9D80BF';
             element6.style.borderColor = '#9D80BF';
@@ -44,7 +44,7 @@
         activestemp = false;
         concludetemp = false;
         toclosetemp = false;
-        unpaIdtemp = false;
+        unpaidtemp = false;
         var element2 = document.getElementById("pending");
         element2.style.backgroundColor = '#41B8D5';
         element2.style.color = '#E5F2F8';
@@ -65,7 +65,7 @@
         element5.style.backgroundColor = ' #E6EDF5';
         element5.style.color = '#4A7DA5';
         element5.style.borderColor = '#4A7DA5';
-        var element6 = document.getElementById("unpaId");
+        var element6 = document.getElementById("unpaid");
         element6.style.backgroundColor = '#EFEEF4';
         element6.style.color = '#9D80BF';
         element6.style.borderColor = '#9D80BF';
@@ -76,7 +76,7 @@
         pendingtemp = false;
         concludetemp = false;
         toclosetemp = false;
-        unpaIdtemp = false;
+        unpaidtemp = false;
         var element3 = document.getElementById("actives");
         element3.style.backgroundColor = '#4E8150';
         element3.style.color = '#E9F0E8';
@@ -97,7 +97,7 @@
         element5.style.backgroundColor = ' #E6EDF5';
         element5.style.color = '#4A7DA5';
         element5.style.borderColor = '#4A7DA5';
-        var element6 = document.getElementById("unpaId");
+        var element6 = document.getElementById("unpaid");
         element6.style.backgroundColor = '#EFEEF4';
         element6.style.color = '#9D80BF';
         element6.style.borderColor = '#9D80BF';
@@ -108,7 +108,7 @@
         pendingtemp = false;
         activestemp = false;
         toclosetemp = false;
-        unpaIdtemp = false;
+        unpaidtemp = false;
         var element4 = document.getElementById("conclude");
         element4.style.backgroundColor = '#A64676';
         element4.style.color = '#F7E6EE';
@@ -129,7 +129,7 @@
         element5.style.backgroundColor = ' #E6EDF5';
         element5.style.color = '#4A7DA5';
         element5.style.borderColor = '#4A7DA5';
-        var element6 = document.getElementById("unpaId");
+        var element6 = document.getElementById("unpaid");
         element6.style.backgroundColor = '#EFEEF4';
         element6.style.color = '#9D80BF';
         element6.style.borderColor = '#9D80BF';
@@ -140,7 +140,7 @@
         pendingtemp = false;
         activestemp = false;
         concludetemp = false;
-        unpaIdtemp = false;
+        unpaidtemp = false;
         var element5 = document.getElementById("toclose");
         element5.style.backgroundColor = '#4A7DA5';
         element5.style.color = '#E6EDF5';
@@ -161,19 +161,19 @@
         element4.style.backgroundColor = '#F7E6EE';
         element4.style.color = '#A64676';
         element4.style.borderColor = '#A64676';
-        var element6 = document.getElementById("unpaId");
+        var element6 = document.getElementById("unpaid");
         element6.style.backgroundColor = '#EFEEF4';
         element6.style.color = '#9D80BF';
         element6.style.borderColor = '#9D80BF';
         })
-        $('#unpaId').on('click', function () {
-            unpaIdtemp = true;
+        $('#unpaid').on('click', function () {
+            unpaidtemp = true;
         newtemp = false;
         pendingtemp = false;
         activestemp = false;
         concludetemp = false;
         toclosetemp = false;
-        var element6 = document.getElementById("unpaId");
+        var element6 = document.getElementById("unpaid");
         element6.style.backgroundColor = '#9D80BF';
         element6.style.color = '#EFEEF4';
         element6.style.borderColor = '#EFEEF4';

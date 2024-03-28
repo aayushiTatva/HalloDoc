@@ -60,6 +60,10 @@ namespace HalloDocMVC.Controllers.AdminController
                 {
                     return RedirectToAction("Index", "PatientDashboard");
                 }
+                if(u.Role == "Provider")
+                {
+                    return RedirectToAction("Index", "ProviderDashboard");
+                }
                 return RedirectToAction("Index", "Dashboard");
             }
             else

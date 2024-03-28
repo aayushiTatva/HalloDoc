@@ -12,6 +12,10 @@ namespace HalloDocMVC.Controllers
         {
             return View("../AdminPanel/Home/Login");
         }
+        /*public IActionResult AdminIndex()
+        {
+            return View("../AdminPanel/Home/Login");
+        }*/
         /*public IActionResult Index()
         {
             return View("../PatientPanel/Home/Index");

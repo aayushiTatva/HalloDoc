@@ -1,0 +1,316 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
+}
+@using static HalloDocMVC.DBEntity.ViewModels.AdminPanel.Constant
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6">
+            <h4><strong>Edit Physician Account</strong></h4>
+        </div>
+        <div class="col-6 ms-auto">
+            <a class="relogin ms-auto" asp-controller="Dashboard" asp-action="Index"><button class="relogin shadow-none bg-white">Back</button></a>
+        </div>
+    </div>
+    <div class="row min-vh-100">
+        <div class="card shadow border-0 mb-3">
+            <div class="card-header mb-3">
+                <h5><strong>Account Information</strong></h5>
+            </div>
+            <form method="post" asp-controller="" asp-action="">
+                <input type="hidden" @*asp-for="AdminId"*@ />
+                <div class="card-body border-0">
+                    <div class="row ">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="UserName"*@ type="text" class="form-control shadow-none" id="uname" placeholder="UserName" disabled>
+                            <label class="ms-2" for="uname"> UserName</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="Password"*@ type="password" class="form-control shadow-none" id="passwd" placeholder="Password">
+                            <label class="ms-2" for="passwd">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <select class="form-select shadow-none" required @*asp-for="Status"*@ id="Status"  style="height: 60px" >
+                                <option>Active</option>
+                            </select>
+                            <label for="Status">Status</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <select @*asp-for="RoleId"*@ class="form-select form-control shadow-none" id="Role"  >
+                                <option>Master Admin</option>
+                            </select>
+                            <label for="Role">Role</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 ms-auto">
+                            <a class="relogin ms-auto"><button class="relogin shadow-none bg-white" type="submit">Reset Password</button></a>
+                            <a class="btn provideracc d-none d-sm-block mx-3 shadow-none  " asp-controller="" asp-action="" style="background-color:aqua; border:2px solid aqua;">Edit</a>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card shadow border-0 mb-3">
+            <div class="card-header">
+                <h4><strong>Physician Information</strong></h4>
+            </div>
+            <form method="post" asp-controller="" asp-action="" id="AdministratorInfoForm">
+                <input type="hidden" @*asp-for="AdminId"*@ id="AdminId" />
+                <div class="card-body border-0">
+                    <div class="row ">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="FirstName"*@ type="text" class="form-control shadow-none input" id="fname" placeholder="details">
+                            <label class="ms-2" for="fname"> First Name</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="LastName"*@ type="text" class="form-control shadow-none input" id="lname" placeholder="details">
+                            <label class="ms-2" for="lname">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="Email"*@ type="emil" class="form-control shadow-none input" id="email" placeholder="Email">
+                            <label class="ms-2" for="email">Email</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="PhoneNumber"*@ class="form-control shadow-none input" type="tel" id="phones" placeholder="Phone Number" />
+                            <label class="ms-2" for="tel">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="PhoneNumber"*@ class="form-control shadow-none input" type="tel" id="phones" placeholder="Phone Number" />
+                            <label class="ms-2" for="tel">Medical Licencse #</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="PhoneNumber"*@ class="form-control shadow-none input" type="tel" id="phones" placeholder="Phone Number" />
+                            <label class="ms-2" for="tel">NPI Number</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="PhoneNumber"*@ class="form-control shadow-none input" type="tel" id="phones" placeholder="Phone Number" />
+                            <label class="ms-2" for="tel">Synchronization Email Address</label>
+                        </div>
+                        <input type="hidden" @*asp-for="RegionsId"*@ id="regionids" />
+                        <div class="col-md-6 d-flex">
+                            <div class="form-check mx-2">
+                                <input class="form-check-input input" value="" type="checkbox" name="Region" checked>
+                                <label class="form-check-label" for="flexCheckDefault">
+
+                                </label>
+                            </div>
+                            <div class="form-check mx-2">
+                                <input class="form-check-input input" value="" type="checkbox" name="Region">
+                                <label class="form-check-label" for="flexCheckDefault">
+
+                                </label>
+                            </div>
+                            }
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 mt-1">
+                            <a id="editings" onclick=" toggleFormElements('true')" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded ">Edit</a>
+                            <input type="button" value="Save" id="savings" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card shadow border-0 mb-3">
+            <div class="card-header">
+                <h4><strong>Mailing and Biling Information</strong></h4>
+            </div>
+            <form method="post" asp-controller="" asp-action="" id="BillingInfoForm">
+                <input type="hidden" @*asp-for="AdminId"*@ />
+                <div class="card-body border-0">
+                    <div class="row ">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="Address1"*@ type="text" class="form-control shadow-none inputs" id="address1" placeholder="Address 1">
+                            <label class="ms-2" for="address1"> Address 1</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="Address2"*@ type="text" class="form-control shadow-none inputs" id="address2" placeholder="Address 2">
+                            <label class="ms-2" for="address2">Address 2</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="City"*@ type="text" class="form-control shadow-none inputs" id="city" placeholder="City">
+                            <label class="ms-2" for="city">City</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <select class="form-select shadow-none inputs" @*asp-for="State"*@ id="floatingSelectGrid" style="height: 60px" placeholder="State">
+                                <option selected class="text-secondary">State</option>
+                                <option value="1">Virginia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="ZipCode"*@ type="text" class="form-control shadow-none inputs" id="zipcode" placeholder="Zipcode">
+                            <label class="ms-2" for="zipcode">Zipcode</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="PhoneNumber"*@ class="form-control shadow-none inputs" type="tel" id="phones" placeholder="Phone Number" />
+                            <label class="ms-2" for="tel">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 mt-1">
+                            <a id="editing" onclick=" mytoggleFormElements('true')" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded ">Edit</a>
+                            <input type="button" value="Save" id="saving" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card shadow border-0 mb-3">
+            <div class="card-header">
+                <h4><strong>Provider Profile</strong></h4>
+            </div>
+            <form method="post" asp-controller="" asp-action="" id="BillingInfoForm">
+                <input type="hidden" @*asp-for="AdminId"*@ />
+                <div class="card-body border-0">
+                    <div class="row ">
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="Address1"*@ type="text" class="form-control shadow-none inputs" id="address1" placeholder="Address 1">
+                            <label class="ms-2" for="address1"> Address 1</label>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3">
+                            <input @*asp-for="Address2"*@ type="text" class="form-control shadow-none inputs" id="address2" placeholder="Address 2">
+                            <label class="ms-2" for="address2">Address 2</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-floating mb-3">
+                            <div class="d-flex justify-content-between bg-light border border-secondary rounded mt-3">
+                                <button type="button" id="choosenfile" class="col btn text-start text-secondary" onclick="document.getElementById('files').click()">
+                                    Select File
+                                </button>
+                                <input id="files" type="file" class="d-none form-control doc_uploder" name="file">
+                                @*<input type="hidden" name="Requestid" value="@Model.RequestId" />*@
+                                <button type="submit" class="btn btn-info text-white py-2" id="fileUploadBtn" value="Upload">
+                                    <i class="fa fa-cloud-upload"></i>
+                                    <span class="d-none d-sm-inline">Upload</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-floating mb-3 d-flex ">
+                            <div class="d-flex justify-content-between bg-light border border-secondary rounded mt-3 col-md-9" style="width:80%; height:70%">
+                                <button type="button" id="choosenfile" class="col btn text-start text-secondary" onclick="document.getElementById('files').click()">
+                                    Select Signature
+                                </button>
+                                <input id="files" type="file" class="d-none form-control doc_uploder" name="file">
+                                @*<input type="hidden" name="Requestid" value="@Model.RequestId" />*@
+                                <button type="submit" class="btn btn-info text-white py-2" id="fileUploadBtn" value="Upload">
+                                    <i class="fa fa-cloud-upload"></i>
+                                    <span class="d-none d-sm-inline">Upload</span>
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-info text-white m-3" id="@*fileUploadBtn*@" value="Upload" >
+                                    <i class="fa fa-edit"></i>
+                                    <span class="d-none d-sm-inline">Create</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 mt-1">
+                            <a id="editing" onclick=" mytoggleFormElements('true')" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded ">Edit</a>
+                            <input type="button" value="Save" id="saving" style=" height:2.5rem;width:4rem" class="btn btn-info text-white rounded">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    window.onload = function (e) {
+        toggleFormElements('true')
+        mytoggleFormElements('true')
+    }
+    function toggleFormElements(bDisabled) {
+        var inputs = document.getElementsByClassName("input");
+        var submit = document.getElementById("savings");
+        var editprofile = document.getElementById("editings");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = !inputs[i].disabled;
+        }
+        if (inputs[0].disabled) {
+            submit.style.display = "none";
+            editprofile.style.display = "block";
+        } else {
+            submit.style.display = "block";
+            editprofile.style.display = "none";
+        }
+        console.log("Hello Admin");
+    }
+
+    function mytoggleFormElements(bDisabled) {
+        var inputs = document.getElementsByClassName("inputs");
+        var submit = document.getElementById("saving");
+        var editprofile = document.getElementById("editing");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = !inputs[i].disabled;
+        }
+        if (inputs[0].disabled) {
+            submit.style.display = "none";
+            editprofile.style.display = "block";
+        } else {
+            submit.style.display = "block";
+            editprofile.style.display = "none";
+        }
+        console.log("Hello Mail");
+    }
+
+    $(function () {
+        $('#savings').on('click', function () {
+            let checkboxes = document.querySelectorAll('input[name="Region"]:checked');
+            let regionIds = [];
+            checkboxes.forEach((checkbox) => {
+                regionIds.push(checkbox.value);
+            });
+            document.querySelector('#regionids').value = regionIds.join(',');
+            Swal.fire({
+                title: "Do you want to Edit Information ?",
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                denyButtonText: `Don't save`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#AdministratorInfoForm').submit();
+                }
+            });
+        });
+    });
+
+    $(function () {
+        $('#saving').on('click', function () {
+            Swal.fire({
+                title: "Do you want to Edit Information ?",
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                denyButtonText: `Don't save`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#BillingInfoForm').submit();
+                }
+            });
+        });
+    });
+</script>
